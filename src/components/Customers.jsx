@@ -1,220 +1,106 @@
-// import React, { useRef, useState, useEffect } from "react";
-// import { ChevronLeft, ChevronRight } from "lucide-react";
-
-// const originalTestimonials = [
-//   {
-//     name: "Dev Chauhan",
-//     rating: 5,
-//     text: "I have booked Himachal trip for my family at very reasonable price...",
-//   },
-//   {
-//     name: "Riya Agarwal",
-//     rating: 5,
-//     text: "Went on my first solo trip with EnjoyKaraDo. Best experience ever.",
-//   },
-//   {
-//     name: "Zeeshan Nadaf",
-//     rating: 5,
-//     text: "We booked a Jaipur Ranthambore trip. Excellent service!",
-//   },
-//   {
-//     name: "Nisha Mehta",
-//     rating: 5,
-//     text: "Loved the Kerala trip! Amazing service. Highly recommend!",
-//   },
-//   {
-//     name: "Rahul Singh",
-//     rating: 5,
-//     text: "Parents enjoyed every moment of the Sikkim tour. Thank you!",
-//   },
-//   {
-//     name: "Priya Sharma",
-//     rating: 5,
-//     text: "Smooth and memorable. 10/10 experience!",
-//   },
-// ];
-
-// const Customers = () => {
-//   const containerRef = useRef(null);
-//   const [cardWidth, setCardWidth] = useState(0);
-
-//   // Clone items for circular loop
-//   const testimonials = [
-//     ...originalTestimonials.slice(-4), // last 4
-//     ...originalTestimonials,
-//     ...originalTestimonials.slice(0, 4), // first 4
-//   ];
-
-//   const scrollLeft = () => {
-//     if (!containerRef.current) return;
-//     containerRef.current.scrollBy({
-//       left: -cardWidth,
-//       behavior: "smooth",
-//     });
-//   };
-
-//   const scrollRight = () => {
-//     if (!containerRef.current) return;
-//     containerRef.current.scrollBy({
-//       left: cardWidth,
-//       behavior: "smooth",
-//     });
-//   };
-
-//   // Set initial position to "real start" (after prepended clones)
-//   useEffect(() => {
-//     const container = containerRef.current;
-//     const firstCard = container?.querySelector(".testimonial-card");
-//     if (firstCard) {
-//       const width = firstCard.offsetWidth + 16;
-//       setCardWidth(width);
-//       setTimeout(() => {
-//         container.scrollLeft = width * 4;
-//       }, 50);
-//     }
-//   }, []);
-
-//   // Infinite loop effect: detect when to reset scroll position invisibly
-//   useEffect(() => {
-//     const container = containerRef.current;
-//     if (!container) return;
-
-//     const onScroll = () => {
-//       const scrollLeft = container.scrollLeft;
-//       const totalScroll = cardWidth * (originalTestimonials.length);
-//       if (scrollLeft <= cardWidth * 0.5) {
-//         // At the start (before real items) → jump to end
-//         container.scrollLeft = scrollLeft + totalScroll;
-//       } else if (
-//         scrollLeft >= cardWidth * (originalTestimonials.length + 3.5)
-//       ) {
-//         // At the end (past real items) → jump to start
-//         container.scrollLeft = scrollLeft - totalScroll;
-//       }
-//     };
-
-//     container.addEventListener("scroll", onScroll);
-//     return () => container.removeEventListener("scroll", onScroll);
-//   }, [cardWidth]);
-
-//   return (
-//     <section className="py-16 px-4 bg-gray-300 text-center">
-//       <h2 className="text-3xl font-bold text-gray-900 mb-2">
-//         What Our Customers Say
-//       </h2>
-//       <p className="text-gray-600 mb-10">
-//         Hear from our happy customers about their amazing journeys.
-//       </p>
-
-//       <div className="flex items-center justify-center gap-4">
-//         <button
-//           onClick={scrollLeft}
-//           className="p-2 border rounded-full shadow hover:bg-gray-100 z-10"
-//         >
-//           <ChevronLeft />
-//         </button>
-
-//         <div
-//           ref={containerRef}
-//           className="flex overflow-x-auto scroll-smooth no-scrollbar gap-4 max-w-6xl"
-//         >
-//           {testimonials.map((t, idx) => (
-//             <div
-//               key={idx}
-//               className="testimonial-card min-w-[250px] max-w-[300px] flex-shrink-0 bg-white shadow-md rounded-lg px-4 py-6 border"
-//             >
-//               <div className="flex flex-col items-center">
-//                 <div className="w-20 h-20 flex items-center justify-center rounded-full border-2 border-yellow-400 mb-4">
-//                   <div className="text-yellow-400 text-3xl">👤</div>
-//                 </div>
-//                 <h3 className="text-md font-semibold text-gray-900">
-//                   {t.name}
-//                 </h3>
-//                 <div className="text-yellow-400 my-2">
-//                   {"★".repeat(t.rating)}
-//                 </div>
-//                 <p className="text-gray-600 text-sm text-center">{t.text}</p>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-
-//         <button
-//           onClick={scrollRight}
-//           className="p-2 border rounded-full shadow hover:bg-gray-100 z-10"
-//         >
-//           <ChevronRight />
-//         </button>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Customers;
-
-
-
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Navigation } from 'swiper/modules';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 
-const users = [
-  ...Array(10).fill({
-    name: 'Bikram Bohara',
-    profession: 'Full Stack Developer',
-    image: './bikram.jpg', // make sure this image exists in your public folder
-  }),
+const customerdata = [
+  {
+    title: "Skip the Queue: Off-Beat Himachal",
+    date: "30 March, 2025",
+    description: "Manali, Kufri, Shimla, etc., have now become too mainstream. If you are looking for hidden gems, explore untouched valleys and trails.",
+    image: "./nepal.png",
+  },
+  {
+    title: "Trekking in Sikkim",
+    date: "30 March, 2025",
+    description: "Sikkim, a place less explored, and a natural bliss for adventure lovers, offers some of the most scenic trekking routes in the Himalayas.",
+    image: "./homeimage.jpg",
+  },
+  {
+    title: "Top Foods of Himachal",
+    date: "23 March, 2025",
+    description: "Himachal shares a rich Pahadi cuisine that's unique to the region. Dishes like Siddu, Dham, and Chha Gosht are must-tries!",
+    image: "./home.jpg",
+  },
+  {
+    title: "Ganga Aarti in Varanasi",
+    date: "23 March, 2025",
+    description: "Ganga Aarti is one of the most famous spiritual rituals in India. The atmosphere during the Aarti is magical and peaceful.",
+    image: "./nepal.png",
+  },
+  {
+    title: "Kathmandu Adventure",
+    date: "29 March, 2025",
+    description: "Explore cultural richness and temples of Kathmandu, the city of temples and the gateway to Himalayan adventure.",
+    image: "./home.jpg",
+  },
 ];
 
 const Customers = () => {
   return (
-    <div className="min-h-screen bg-gray-300 flex items-center justify-center p-6">
-      <h2 className="text-3xl font-bold text-center mb-2">
-        Latest from{" "}
-        <span className="underline decoration-yellow-500">NepJourney</span>
-      </h2>
-      <p className="text-center text-gray-700 mb-8 max-w-xl">
-        Stay updated with our latest blogs. Dive into interesting stories, tips,
-        and insights!
-      </p>
-      <div className="w-full max-w-7xl">
+    <section className='py-16 px-4 max-w-7xl mx-auto'>
+      <div className='text-center'>
+        <h1 className='text-3xl font-bold md:text-4xl mb-4'>What Our Customers Say</h1>
+        <p>Hear from our happy customers about their amazing journeys.</p>
+      </div>
+
+      <div className='relative'>
         <Swiper
-          modules={[Navigation, Pagination]}
-          loop={true}
-          grabCursor={true}
-          spaceBetween={45}
-          pagination={{ clickable: true, dynamicBullets: true }}
-          navigation={true}
-          breakpoints={{
-            0: { slidesPerView: 1 },
-            620: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+          navigation={{
+            nextEl: '.swiper-button-next-custom',
+            prevEl: '.swiper-button-prev-custom',
           }}
+          spaceBetween={30}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+          modules={[Navigation]}
+          className="testimonials-swiper md:mb-12"
         >
-          {users.map((user, index) => (
-            <SwiperSlide key={index}>
-              <div className="text-white bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 flex flex-col items-center text-center">
-                <img
-                  src={user.image}
-                  alt="user"
-                  className="w-36 h-36 rounded-full border-4 border-white mb-6 object-cover"/>
-                <h2 className="text-xl font-semibold">{user.name}</h2>
-                <p className="text-gray-200 mt-2 mb-6 text-sm">{user.profession}</p>
-                <button className="px-6 py-2 text-sm font-medium text-[#030728] bg-gray-200 rounded hover:bg-yellow-400 transition"> Message</button>
+          {customerdata.map((testimonial, index) => (
+            <SwiperSlide key={index} className='h-full md:py-12 py-4'>
+              <div className='text-center bg-white p-4 rounded-lg shadow-md h-full flex flex-col transform transition-transform duration-300 hover:shadow-lg hover:scale-105 min-h-[400px]'>
+                <div className='w-24 h-24 mx-auto mb-4'>
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.title}
+                    className='w-full h-full object-cover rounded-full'
+                  />
+                </div>
+                <div className='flex justify-center mb-2'>
+                  {[...Array(5)].map((_, starIndex) => (
+                    <span key={starIndex} className='text-yellow-400 text-lg'>★</span>
+                  ))}
+                </div>
+                <h3 className='text-xl font-semibold mb-1'>{testimonial.title}</h3>
+                <p className='text-gray-500 text-sm mb-2'>{testimonial.date}</p>
+                <p className='text-gray-600 h-20 overflow-hidden'>{testimonial.description}</p>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+
+        <div className='flex justify-center gap-4 md:mt-8'>
+          <button className='swiper-button-prev-custom w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-yellow-400 hover:text-white transition-all duration-200 cursor-pointer'>
+            <BsChevronLeft className='size-6' />
+          </button>
+          <button className='swiper-button-next-custom w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-yellow-400 hover:text-white transition-all duration-200 cursor-pointer'>
+            <BsChevronRight className='size-6' />
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
 export default Customers;
-
-
-
-

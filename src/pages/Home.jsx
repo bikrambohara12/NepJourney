@@ -7,6 +7,7 @@ import Latest from '../components/Latest';
 import Customers from '../components/Customers';
 
 
+
 const Home = () => {
   return (
     <>
@@ -15,7 +16,6 @@ const Home = () => {
       {/* <RecentTrips /> */}
       <Latest />
       <Customers />
-   
     </>
   );
 };

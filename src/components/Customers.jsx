@@ -69,7 +69,7 @@ const Customers = () => {
         >
           {customerdata.map((testimonial, index) => (
             <SwiperSlide key={index} className='h-full md:py-12 py-4'>
-              <div className='text-center bg-white p-4 rounded-lg shadow-md h-full flex flex-col transform transition-transform duration-300 hover:shadow-lg hover:scale-105 min-h-[400px]'>
+              <div className='text-center  p-4 rounded-lg shadow-md h-full flex flex-col transform transition-transform duration-300 hover:shadow-lg hover:scale-105 min-h-[400px]'>
                 <div className='w-24 h-24 mx-auto mb-4'>
                   <img
                     src={testimonial.image}

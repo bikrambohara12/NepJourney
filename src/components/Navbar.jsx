@@ -71,10 +71,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center px-8 py-4">
         {/* Logo */}
         <img
-          src="./logo.png"
-          alt="NepJourney Logo"
-          className="h-12 w-40 object-contain"
-        />
+          src="./logo.png" alt="NepJourney Logo"className="h-16 w-50 object-contain  scale-235"/>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6">

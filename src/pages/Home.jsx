@@ -11,6 +11,7 @@ import Customers from '../components/Customers';
 const Home = () => {
   return (
     <>
+    
       <Header />
       <Features/>
       {/* <RecentTrips /> */}

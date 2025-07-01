@@ -4,7 +4,7 @@ import person1 from '../assets/person1.png';
 import person2 from '../assets/person2.png';
 import { ArrowRight } from 'lucide-react'; 
 import person7 from '../assets/person7.png';
-
+import person8 from '../assets/person8.png';
 const About = () => {
   return (
     <div className="bg-sky-50 min-h-screen p-6 space-y-16 pt-38 pb-14">
@@ -84,6 +84,51 @@ const About = () => {
           support local communities, and showcase the best of Nepal to the world.
           </p>
         </div>
+    </div>
+
+{/* goal section */}
+    <div className="bg-gray-100 p-6 rounded-xl shadow-md">
+      <div className="grid md:grid-cols-3 gap-6">
+        {/* Image 1 */}
+        <img
+            src={person8} 
+            alt="person"
+            className="w-full h-full object-cover"/>
+        {/* Image 2 */}
+        <img
+          src="./person2.png"
+          alt="Room 2"
+          className="rounded-xl object-cover h-full w-full"/>
+        {/* Text Section */}
+        <div className="bg-white rounded-xl p-6 shadow bg-gradient-to-b from-blue-100 to-orange-100">
+          <h2 className="text-2xl font-bold mb-4 ">Our Goal:</h2>
+          <p className="text-gray-600 mb-6">
+            Our aim is to build a seamless, user-friendly platform where travelers can easily find and book guides,
+             discover hidden gems, and share their stories—while giving local experts a fair way to grow their businesses. 
+             We’re also committed to safety, transparency, and great service, making sure every journey is unforgettable for the right reasons.
+          </p>
+        </div>
+      </div>
+
+      {/* Stats Section */}
+      <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center bg-white p-6 rounded-xl shadow">
+        <div>
+          <p className="text-2xl font-bold text-gray-800">7,860+</p>
+          <p className="text-gray-500 text-sm">Rent Home</p>
+        </div>
+        <div>
+          <p className="text-2xl font-bold text-gray-800">98+</p>
+          <p className="text-gray-500 text-sm">State</p>
+        </div>
+        <div>
+          <p className="text-2xl font-bold text-gray-800">2,530+</p>
+          <p className="text-gray-500 text-sm">Buy Home</p>
+        </div>
+        <div>
+          <p className="text-2xl font-bold text-gray-800">250+</p>
+          <p className="text-gray-500 text-sm">Agents</p>
+        </div>
+      </div>
     </div>
     </div>
   );

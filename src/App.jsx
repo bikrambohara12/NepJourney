@@ -23,7 +23,7 @@ const App = () => {
         <ToastContainer position="top-right" autoClose={3000} />
 
         <Routes>
-          <Route path="/Home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/guides" element={<Guides />} />
           <Route path='/About' element={<About/>} />
           <Route path="/Contact" element={<Contact />} />

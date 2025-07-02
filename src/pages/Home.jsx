@@ -2,22 +2,21 @@
 import React from 'react';
 import Header from "../components/Header";
 import Features from '../components/Features';
-// import RecentTrips from '../components/RecentTrips';
-import Latest from '../components/Latest';
 import Customers from '../components/Customers';
+import Speciality from '../components/Speciality';
+import TopGuide from '../components/TopGuide';
 
 
 
 const Home = () => {
   return (
-    <>
-    
+    <div>
       <Header />
       <Features/>
-      {/* <RecentTrips /> */}
-      <Latest />
+      <Speciality/>
+      <TopGuide/>
       <Customers />
-    </>
+    </div>
   );
 };
 

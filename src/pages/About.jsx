@@ -24,7 +24,7 @@ const About = () => {
       name: "Amir Bohara",
       title: "Frontend Developer",
       description: "Former frontend dev for Linear, Coinbase, and Postscript.",
-      image: "public/images/kathmandu temple.jpg",
+      image: "public/person2.jpg",
     },
   ]
 

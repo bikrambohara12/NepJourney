@@ -1,138 +1,66 @@
-// import React from 'react'
-// import React, {useState}  from 'react' 
-
-// const Login = () => {
-
-// const [state,setState] = usestate('sign up')
-// const[email,setEmail] = useState('')
-// const[password,setPassword] = useState('')
-// const[name,setName] = useState('')
-
-// constonSubmitHandler = async(event) =>{
-// event.preventDefault()
-// }
-//   return (
-//     <form className='min-h-[80vh] fles items-center'>
-//       <div className='flex flex-col gap-3 m-auto items-startp-8 min-w-[340px] sm:min-w-96 border rounded-xl text-zinc-600 text-sm shadow-lg'>
-//         <p className='text-2xl font-semibold '>{state === 'Sign up '? "Create account" :"Login"}</p>
-//         <p>please {state === 'Register '? "Register" :"log in"} sign up to book Guide and destination</p>
-
-//         {
-//             state === "Register" &&<div className='w-full'>
-//             <p>Full Name</p>
-//             <input className='border border-zinc-300 rounded w-full p-2  mt-1' type="text" onChange={(e)=>setName(e.target.name)}value ={name} required/>
-//         </div>
-//         }
-
-
-//         <div className='w-full'>
-//             <p>Email</p>
-//             <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="Email" onChange={(e)=>setEmail(e.target.name)}value ={email}required/>
-//         </div>
-
-//         <div className='w-full'>
-//             <p>Password</p>
-//             <input className='border border-zinc-300 rounded w-full p-2 mt-1' type="Password" onChange={(e)=>setPassword(e.target.name)}value ={password}required/>
-//         </div>
-//         <button className='bg-primary text-white w-full py-2 rounded-md text-base '>{state === 'Sign up '? "Login" :"Login"}</button>
-//         {
-//          stse === ' Register' ?
-//          <p>Don't have an account? <span onClick={()=>setState('Register')} className='text-primary underline crusor-pointer'>Register</span> </p>
-//          : <p>Already have an account?<span onClick={()=>setState('Login')} className='text-primary underline crusor-pointer'>Login</span> </p>
-//         }
-//       </div>
-//     </form>
-//   )
-// }
-
-// export default Login
-
-
-// import React from 'react';
-
-// export default function Login() {
-//   return (
-//     <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow rounded">
-//       <h2 className="text-xl font-bold mb-4">Login</h2>
-//       <input className="w-full border p-2 rounded mb-4" placeholder="Email" />
-//       <input className="w-full border p-2 rounded mb-4" type="password" placeholder="Password" />
-//       <button className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Login</button>
-//     </div>
-//   );
-// }
-
-
 // import React, { useState } from "react";
 
-// const Login = ({ onSwitchToRegister }) => {
-//   const [formData, setFormData] = useState({
-//     email: "",
-//     password: "",
-//   });
+// const Login = ({ onClose, onSwitchToRegister }) => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({ ...prev, [name]: value }));
-//   };
-
-//   const handleSubmit = (e) => {
+//   const handleLogin = (e) => {
 //     e.preventDefault();
-//     // TODO: Add your login logic here (e.g., API call)
-//     console.log("Logging in user:", formData);
-//     alert(`Logged in as ${formData.email}`);
-//     // Reset form (optional)
-//     setFormData({ email: "", password: "" });
+//     alert("Login successful!");
+//     setEmail("");
+//     setPassword("");
+//     onClose(); // Close modal after login
 //   };
 
 //   return (
-//     <div className="modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-//       <div className="modal-content bg-white p-6 rounded-lg relative max-w-md w-full">
+//     <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
+//       <div className="bg-white rounded-lg p-6 w-full max-w-md relative">
+//         <button
+//           onClick={onClose}
+//           className="absolute top-3 right-4 text-2xl font-bold"
+//         >
+//           &times;
+//         </button>
 //         <h2 className="text-xl font-semibold mb-4">Login to Your Account</h2>
-
-//         <form onSubmit={handleSubmit} className="space-y-4">
-//           <div className="form-group flex flex-col">
-//             <label htmlFor="email" className="mb-1 font-medium">
+//         <form onSubmit={handleLogin} className="space-y-4">
+//           <div>
+//             <label htmlFor="loginEmail" className="block mb-1 font-medium">
 //               Email
 //             </label>
 //             <input
 //               type="email"
-//               id="email"
-//               name="email"
+//               id="loginEmail"
+//               value={email}
+//               onChange={(e) => setEmail(e.target.value)}
 //               required
-//               value={formData.email}
-//               onChange={handleChange}
-//               className="border border-gray-300 rounded px-3 py-2"
+//               className="w-full border border-gray-300 px-3 py-2 rounded"
 //             />
 //           </div>
-
-//           <div className="form-group flex flex-col">
-//             <label htmlFor="password" className="mb-1 font-medium">
+//           <div>
+//             <label htmlFor="loginPassword" className="block mb-1 font-medium">
 //               Password
 //             </label>
 //             <input
 //               type="password"
-//               id="password"
-//               name="password"
+//               id="loginPassword"
+//               value={password}
+//               onChange={(e) => setPassword(e.target.value)}
 //               required
-//               value={formData.password}
-//               onChange={handleChange}
-//               className="border border-gray-300 rounded px-3 py-2"
+//               className="w-full border border-gray-300 px-3 py-2 rounded"
 //             />
 //           </div>
-
 //           <button
 //             type="submit"
-//             className="btn-submit w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
+//             className="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
 //           >
 //             Login
 //           </button>
 //         </form>
-
-//         <div className="form-footer mt-4 text-center text-sm">
+//         <div className="mt-4 text-center text-sm">
 //           Don't have an account?{" "}
 //           <button
-//             className="text-yellow-500 underline"
 //             onClick={onSwitchToRegister}
+//             className="text-yellow-500 underline"
 //           >
 //             Register
 //           </button>
@@ -143,79 +71,125 @@
 // };
 
 // export default Login;
+"use client"
 
-
-
-import React, { useState } from "react";
+import { useState } from "react"
+import { X, Mail, Lock } from "lucide-react"
 
 const Login = ({ onClose, onSwitchToRegister }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    alert("Login successful!");
-    setEmail("");
-    setPassword("");
-    onClose(); // Close modal after login
-  };
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    setIsLoading(true)
+
+    // Simulate API call
+    setTimeout(() => {
+      alert("Login successful!")
+      setEmail("")
+      setPassword("")
+      setIsLoading(false)
+      onClose()
+    }, 1000)
+  }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-md relative">
+    <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 p-4">
+      <div className="bg-white rounded-xl shadow-2xl p-6 sm:p-8 w-full max-w-md relative animate-in fade-in duration-200">
+        {/* Close Button */}
         <button
-          onClick={onClose}
-          className="absolute top-3 right-4 text-2xl font-bold"
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            onClose()
+          }}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 transition-colors p-2 rounded-full hover:bg-gray-100 z-50"
+          aria-label="Close modal"
+          type="button"
         >
-          &times;
+          <X className="w-5 h-5" />
         </button>
-        <h2 className="text-xl font-semibold mb-4">Login to Your Account</h2>
-        <form onSubmit={handleLogin} className="space-y-4">
+
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
+          <p className="text-gray-600">Sign in to your account</p>
+        </div>
+
+        {/* Login Form */}
+        <form onSubmit={handleLogin} className="space-y-6">
+          {/* Email Field */}
           <div>
-            <label htmlFor="loginEmail" className="block mb-1 font-medium">
-              Email
+            <label htmlFor="loginEmail" className="block text-sm font-medium text-gray-700 mb-2">
+              Email Address
             </label>
-            <input
-              type="email"
-              id="loginEmail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full border border-gray-300 px-3 py-2 rounded"
-            />
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="email"
+                id="loginEmail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
+                placeholder="Enter your email"
+              />
+            </div>
           </div>
+
+          {/* Password Field */}
           <div>
-            <label htmlFor="loginPassword" className="block mb-1 font-medium">
+            <label htmlFor="loginPassword" className="block text-sm font-medium text-gray-700 mb-2">
               Password
             </label>
-            <input
-              type="password"
-              id="loginPassword"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full border border-gray-300 px-3 py-2 rounded"
-            />
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="password"
+                id="loginPassword"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
+                placeholder="Enter your password"
+              />
+            </div>
           </div>
+
+          {/* Forgot Password */}
+          <div className="text-right">
+            <button type="button" className="text-sm text-yellow-600 hover:text-yellow-700 transition-colors">
+              Forgot password?
+            </button>
+          </div>
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
+            disabled={isLoading}
+            className="w-full bg-yellow-500 text-white py-3 px-4 rounded-lg hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Login
+            {isLoading ? "Signing in..." : "Sign In"}
           </button>
         </form>
-        <div className="mt-4 text-center text-sm">
-          Don't have an account?{" "}
-          <button
-            onClick={onSwitchToRegister}
-            className="text-yellow-500 underline"
-          >
-            Register
-          </button>
+
+        {/* Switch to Register */}
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-600">
+            Don't have an account?{" "}
+            <button
+              onClick={onSwitchToRegister}
+              className="text-yellow-600 hover:text-yellow-700 font-medium transition-colors"
+            >
+              Create account
+            </button>
+          </p>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

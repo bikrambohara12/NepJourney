@@ -236,153 +236,218 @@
 
 // export default Register;
 
+"use client"
 
-
-import React, { useState } from "react";
+import { useState } from "react"
+import { X, User, UserCheck, Mail, Lock, MapPin, Award } from "lucide-react"
 
 const Register = ({ onClose, onSwitchToLogin }) => {
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     password: "",
     location: "",
     expertise: "",
-  });
+  })
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Registration successful!");
-    setFormData({
-      fullName: "",
-      email: "",
-      password: "",
-      location: "",
-      expertise: "",
-    });
-    setRole("");
-    onClose(); // Close modal after register
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsLoading(true)
+
+    // Simulate API call
+    setTimeout(() => {
+      alert("Registration successful!")
+      setFormData({
+        fullName: "",
+        email: "",
+        password: "",
+        location: "",
+        expertise: "",
+      })
+      setRole("")
+      setIsLoading(false)
+      onClose()
+    }, 1000)
+  }
+
+  const roleOptions = [
+    {
+      type: "traveler",
+      label: "Traveler",
+      desc: "I want to explore Nepal",
+      icon: User,
+    },
+    {
+      type: "guide",
+      label: "Guide",
+      desc: "I want to offer services",
+      icon: UserCheck,
+    },
+  ]
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-md relative">
+    <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 p-4">
+      <div className="bg-white rounded-xl shadow-2xl p-6 sm:p-8 w-full max-w-md relative animate-in fade-in duration-200 max-h-[90vh] overflow-y-auto">
+        {/* Close Button */}
         <button
-          onClick={onClose}
-          className="absolute top-3 right-4 text-2xl font-bold"
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            onClose()
+          }}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 transition-colors p-2 rounded-full hover:bg-gray-100 z-50"
+          aria-label="Close modal"
+          type="button"
         >
-          &times;
+          <X className="w-5 h-5" />
         </button>
-        <h2 className="text-xl font-semibold mb-4">Create Your Account</h2>
 
-        {/* Role Selection */}
-        <div className="flex justify-around mb-6">
-          {[
-            { type: "traveler", label: "Traveler", desc: "I want to explore Nepal", icon: "fas fa-user" },
-            { type: "guide", label: "Guide", desc: "I want to offer services", icon: "fas fa-user-tie" },
-          ].map(({ type, label, desc, icon }) => (
-            <div
-              key={type}
-              onClick={() => setRole(type)}
-              className={`cursor-pointer text-center border rounded p-3 w-[45%] ${
-                role === type ? "border-yellow-500 bg-yellow-100" : "border-gray-300"
-              }`}
-            >
-              <i className={`${icon} text-2xl mb-1`}></i>
-              <h3 className="font-semibold">{label}</h3>
-              <p className="text-sm text-gray-600">{desc}</p>
-            </div>
-          ))}
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
+          <p className="text-gray-600">Join our community today</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input type="hidden" name="role" value={role} />
+        {/* Role Selection */}
+        <div className="mb-8">
+          <h3 className="text-sm font-medium text-gray-700 mb-4">Choose your role</h3>
+          <div className="grid grid-cols-2 gap-3">
+            {roleOptions.map(({ type, label, desc, icon: Icon }) => (
+              <div
+                key={type}
+                onClick={() => setRole(type)}
+                className={`cursor-pointer text-center border-2 rounded-lg p-4 transition-all hover:shadow-md ${
+                  role === type ? "border-yellow-500 bg-yellow-50 shadow-md" : "border-gray-200 hover:border-gray-300"
+                }`}
+              >
+                <Icon className="w-8 h-8 mx-auto mb-2 text-gray-600" />
+                <h4 className="font-semibold text-gray-900 mb-1">{label}</h4>
+                <p className="text-xs text-gray-600 leading-tight">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
+        {/* Registration Form */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Full Name */}
           <div>
-            <label className="block mb-1 font-medium">Full Name</label>
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleInputChange}
-              required
-              className="w-full border border-gray-300 px-3 py-2 rounded"
-            />
-          </div>
-          <div>
-            <label className="block mb-1 font-medium">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              className="w-full border border-gray-300 px-3 py-2 rounded"
-            />
-          </div>
-          <div>
-            <label className="block mb-1 font-medium">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              required
-              className="w-full border border-gray-300 px-3 py-2 rounded"
-            />
+            <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+            <div className="relative">
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="text"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                required
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
+                placeholder="Enter your full name"
+              />
+            </div>
           </div>
 
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
+                placeholder="Enter your email"
+              />
+            </div>
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                required
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
+                placeholder="Create a password"
+              />
+            </div>
+          </div>
+
+          {/* Guide-specific fields */}
           {role === "guide" && (
             <>
               <div>
-                <label className="block mb-1 font-medium">Location</label>
-                <input
-                  type="text"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleInputChange}
-                  className="w-full border border-gray-300 px-3 py-2 rounded"
-                />
+                <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="text"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleInputChange}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
+                    placeholder="Your location"
+                  />
+                </div>
               </div>
+
               <div>
-                <label className="block mb-1 font-medium">Expertise</label>
-                <input
-                  type="text"
-                  name="expertise"
-                  value={formData.expertise}
-                  onChange={handleInputChange}
-                  className="w-full border border-gray-300 px-3 py-2 rounded"
-                />
+                <label className="block text-sm font-medium text-gray-700 mb-2">Expertise</label>
+                <div className="relative">
+                  <Award className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="text"
+                    name="expertise"
+                    value={formData.expertise}
+                    onChange={handleInputChange}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
+                    placeholder="Your expertise"
+                  />
+                </div>
               </div>
             </>
           )}
 
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
-            disabled={!role}
+            disabled={!role || isLoading}
+            className="w-full bg-yellow-500 text-white py-3 px-4 rounded-lg hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Register
+            {isLoading ? "Creating account..." : "Create Account"}
           </button>
         </form>
 
-        <div className="mt-4 text-center text-sm">
-          Already have an account?{" "}
-          <button
-            onClick={onSwitchToLogin}
-            className="text-yellow-500 underline"
-          >
-            Login
-          </button>
+        {/* Switch to Login */}
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-600">
+            Already have an account?{" "}
+            <button
+              onClick={onSwitchToLogin}
+              className="text-yellow-600 hover:text-yellow-700 font-medium transition-colors"
+            >
+              Sign in
+            </button>
+          </p>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

@@ -15,23 +15,6 @@
 // import upload_icon from './upload_icon.png'
 // import stripe_logo from './stripe_logo.png'
 // import razorpay_logo from './razorpay_logo.png'
-// import doc1 from './doc1.png'
-// import doc2 from './doc2.png'
-// import doc3 from './doc3.png'
-// import doc4 from './doc4.png'
-// import doc5 from './doc5.png'
-// import doc6 from './doc6.png'
-// import doc7 from './doc7.png'
-// import doc8 from './doc8.png'
-// import doc9 from './doc9.png'
-// import doc10 from './doc10.png'
-// import doc11 from './doc11.png'
-// import doc12 from './doc12.png'
-// import doc13 from './doc13.png'
-// import doc14 from './doc14.png'
-// import doc15 from './doc15.png'
-
-
 
 import cultureguide from './cultureguide.png';
 import localguide from './localguide.png';
@@ -106,216 +89,203 @@ export const specialityData = [
 ]
 
 
-
 export const guides = [
     {
         _id: 'guide1',
-        name: 'Dr. Richard James',
+        name: 'Aarav Thapa',
         image: guide1,
-        speciality: 'General physician',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 50,
+        speciality: 'City Tour, Cultural Heritage',
+        degree: 'BTTM',
+        experience: '6 years',
+        about: 'Aarav specializes in showcasing the rich cultural heritage of Nepal and city landscapes. He is known for his in-depth knowledge of historical landmarks and local traditions.',
+        fees: 2500,
         address: {
-            line1: '17th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Thamel',
+            line2: 'Kathmandu, Nepal'
         }
     },
     {
         _id: 'guide2',
-        name: 'Dr. Emily Larson',
+        name: 'Sita Gurung',
         image: guide2,
-        speciality: 'Gynecologist',
-        degree: 'MBBS',
-        experience: '3 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 60,
+        speciality: 'Family & Solo Female Travel',
+        degree: 'BA in English, Certified Tourist Guide',
+        experience: '4 years',
+        about: 'Sita is passionate about safe and memorable tours for solo female travelers and families. Fluent in English with excellent storytelling skills.',
+        fees: 2000,
         address: {
-            line1: '27th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Lakeside',
+            line2: 'Pokhara, Nepal'
         }
     },
     {
         _id: 'guide3',
-        name: 'Dr. Sarah Patel',
+        name: 'Ramesh KC',
         image: guide3,
-        speciality: 'Dermatologist',
-        degree: 'MBBS',
-        experience: '1 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 30,
+        speciality: 'Historical Sites, Museum Guide',
+        degree: 'MA in History',
+        experience: '5 years',
+        about: 'Ramesh brings history to life with his engaging tours of ancient palaces, temples, and museums. Ideal for heritage lovers.',
+        fees: 2200,
         address: {
-            line1: '37th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Bhaktapur Durbar Square',
+            line2: 'Bhaktapur, Nepal'
         }
     },
     {
         _id: 'guide4',
-        name: 'Dr. Christopher Lee',
+        name: 'Karma Sherpa',
         image: guide4,
-        speciality: 'Pediatricians',
-        degree: 'MBBS',
-        experience: '2 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 40,
+        speciality: 'Everest Base Camp Trek',
+        degree: 'High Altitude Certified Guide',
+        experience: '12 years',
+        about: 'Karma has guided over 100 expeditions to the Everest region. He is a local expert in high-altitude survival and trekking logistics.',
+        fees: 3500,
         address: {
-            line1: '47th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Lukla',
+            line2: 'Solukhumbu, Nepal'
         }
     },
     {
         _id: 'guide5',
-        name: 'Dr. Jennifer Garcia',
+        name: 'Maya Lama',
         image: guide5,
-        speciality: 'Neurologist',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 50,
+        speciality: 'Annapurna Circuit',
+        degree: 'Diploma in Adventure Tourism',
+        experience: '7 years',
+        about: 'Maya is known for her warm and friendly nature. She ensures safe, inclusive, and enjoyable trekking experiences in Annapurna.',
+        fees: 3000,
         address: {
-            line1: '57th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Lakeside',
+            line2: 'Pokhara, Nepal'
         }
     },
     {
         _id: 'guide6',
-        name: 'Dr. Andrew Williams',
+        name: 'Binita Chaudhary',
         image: guide6,
-        speciality: 'Neurologist',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 50,
+        speciality: 'Jungle Safari, Bird Watching',
+        degree: 'BSc in Environmental Science',
+        experience: '6 years',
+        about: 'Binita leads informative and adventurous jungle safaris in Chitwan. She is an expert in identifying wildlife and bird species.',
+        fees: 2000,
         address: {
-            line1: '57th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Sauraha',
+            line2: 'Chitwan, Nepal'
         }
     },
     {
         _id: 'guide7',
-        name: 'Dr. Christopher Davis',
+        name: 'Dipesh Rai',
         image: guide7,
-        speciality: 'General physician',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 50,
+        speciality: 'Langtang, Helambu Trek',
+        degree: 'Certified Mountain Guide (NMA)',
+        experience: '5 years',
+        about: 'Dipesh offers well-organized trekking tours with deep insights into local cultures of Langtang and Helambu regions.',
+        fees: 2800,
         address: {
-            line1: '17th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Dhunche',
+            line2: 'Rasuwa, Nepal'
         }
     },
     {
         _id: 'guide8',
-        name: 'Dr. Timothy White',
+        name: 'Manoj Bhandari',
         image: guide8,
-        speciality: 'Gynecologist',
-        degree: 'MBBS',
-        experience: '3 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 60,
+        speciality: 'Nature Trails, Botanical Tours',
+        degree: 'MSc in Botany',
+        experience: '9 years',
+        about: 'Manoj conducts nature hikes that blend science and scenery. Ideal for eco-tourists and nature lovers.',
+        fees: 2500,
         address: {
-            line1: '27th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Godawari',
+            line2: 'Lalitpur, Nepal'
         }
     },
     {
         _id: 'guide9',
-        name: 'Dr. Ava Mitchell',
+        name: 'Anita Shrestha',
         image: guide9,
-        speciality: 'Dermatologist',
-        degree: 'MBBS',
-        experience: '1 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 30,
+        speciality: 'Solo Travel, Cultural Tours',
+        degree: 'BA in Sociology',
+        experience: '4 years',
+        about: 'Anita is known for empowering solo women travelers and promoting cultural exchange. Fluent in multiple languages.',
+        fees: 2300,
         address: {
-            line1: '37th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Patan',
+            line2: 'Lalitpur, Nepal'
         }
     },
     {
         _id: 'guide10',
-        name: 'Dr. Jeffrey King',
+        name: 'Rabin Tamang',
         image: guide10,
-        speciality: 'Pediatricians',
-        degree: 'MBBS',
-        experience: '2 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 40,
+        speciality: 'Adventure & Zipline Tours',
+        degree: 'BTTM',
+        experience: '6 years',
+        about: 'Rabin organizes adrenaline-pumping tours including bungee jumping, ziplining, and canyoning across Nepal.',
+        fees: 2700,
         address: {
-            line1: '47th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Kushma',
+            line2: 'Parbat, Nepal'
         }
     },
     {
         _id: 'guide11',
-        name: 'Dr. Zoe Kelly',
+        name: 'Laxmi Acharya',
         image: guide11,
-        speciality: 'Neurologist',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 50,
+        speciality: 'Photography & Nature Walks',
+        degree: 'Diploma in Photography',
+        experience: '3 years',
+        about: 'Laxmi guides photographers through scenic spots and offers basic tutorials on capturing perfect travel moments.',
+        fees: 2200,
         address: {
-            line1: '57th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Bandipur',
+            line2: 'Tanahun, Nepal'
         }
     },
     {
         _id: 'guide12',
-        name: 'Dr. Patrick Harris',
+        name: 'Ritesh Bista',
         image: guide12,
-        speciality: 'Neurologist',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 50,
+        speciality: 'Village Tours, Homestay Experience',
+        degree: 'BA in Rural Development',
+        experience: '5 years',
+        about: 'Ritesh promotes village tourism and gives guests a real taste of rural Nepali life through immersive experiences.',
+        fees: 2400,
         address: {
-            line1: '57th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Ghale Gaun',
+            line2: 'Lamjung, Nepal'
         }
     },
     {
         _id: 'guide13',
-        name: 'Dr. Chloe Evans',
+        name: 'Sharmila Thakuri',
         image: guide13,
-        speciality: 'General physician',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 50,
+        speciality: 'Festival Tours, Local Life',
+        degree: 'MA in Culture Studies',
+        experience: '4 years',
+        about: 'Sharmila is an expert in guiding tourists through Nepal’s vibrant festivals and understanding local customs.',
+        fees: 2000,
         address: {
-            line1: '17th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Basantapur',
+            line2: 'Kathmandu, Nepal'
         }
     },
     {
         _id: 'guide14',
-        name: 'Dr. Ryan Martinez',
+        name: 'Tek Bahadur Magar',
         image: guide14,
-        speciality: 'Gynecologist',
-        degree: 'MBBS',
-        experience: '3 Years',
-        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 60,
+        speciality: 'Rafting, Kayaking Guide',
+        degree: 'Certified Whitewater Guide',
+        experience: '8 years',
+        about: 'Tek is an experienced rafting guide navigating Trishuli and Seti rivers with safety and thrill combined.',
+        fees: 3200,
         address: {
-            line1: '27th Cross, Richmond',
-            line2: 'Circle, Ring Road, London'
+            line1: 'Mugling',
+            line2: 'Chitwan, Nepal'
         }
-    },
-    // {
-    //     _id: 'doc15',
-    //     name: 'Dr. Amelia Hill',
-    //     image: doc15,
-    //     speciality: 'Dermatologist',
-    //     degree: 'MBBS',
-    //     experience: '1 Years',
-    //     about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-    //     fees: 30,
-    //     address: {
-    //         line1: '37th Cross, Richmond',
-    //         line2: 'Circle, Ring Road, London'
-    //     }
-    // },
-]
+    }
+];
+
+   

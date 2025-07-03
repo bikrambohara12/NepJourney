@@ -3,125 +3,125 @@ import React from 'react';
 import { FaMapMarkedAlt, FaUserTie, FaCalendarCheck, FaPhoneAlt } from 'react-icons/fa';
 import { BsStars } from 'react-icons/bs';
 
-const tourData = [
-  {
-    id: 1,
-    image: './home.jpg',
-    days: '7 Days / 6 Nights',
-    location: 'Himachal Pradesh - India',
-    title: 'Discover Spiti Valley 7D/6N Tour Package',
-    isNew: true,
-    originalPrice: '₹25,000',
-    discountedPrice: '₹20,999',
-    save: '₹4,001',
-  },
-  {
-    id: 2,
-    image: './home.jpg',
-    days: '5 Days / 4 Nights',
-    location: 'Himachal Pradesh - India',
-    title: 'Chandigarh to Chitkul : 5 days Spiti Itinerary',
-    isNew: true,
-    originalPrice: '₹27,999',
-    discountedPrice: '₹21,999',
-    save: '₹6,000',
-  },
+// const tourData = [
+//   {
+//     id: 1,
+//     image: './home.jpg',
+//     days: '7 Days / 6 Nights',
+//     location: 'Himachal Pradesh - India',
+//     title: 'Discover Spiti Valley 7D/6N Tour Package',
+//     isNew: true,
+//     originalPrice: '₹25,000',
+//     discountedPrice: '₹20,999',
+//     save: '₹4,001',
+//   },
+//   {
+//     id: 2,
+//     image: './home.jpg',
+//     days: '5 Days / 4 Nights',
+//     location: 'Himachal Pradesh - India',
+//     title: 'Chandigarh to Chitkul : 5 days Spiti Itinerary',
+//     isNew: true,
+//     originalPrice: '₹27,999',
+//     discountedPrice: '₹21,999',
+//     save: '₹6,000',
+//   },
 
-  {
-    id: 3,
-    image: './home.jpg',
-    days: '9 Days / 8 Nights',
-    location: 'Ladakh - India',
-    title: 'Ladakh - Srinagar Expedition: 9 Days of Monasteries, Valleys, and Lakes',
-    isNew: true,
-    originalPrice: null,
-    discountedPrice: 'Request Price',
-    save: null,
-  },
-  {
-    id: 4,
-    image: '/home.jpg',
-    days: '7 Days / 6 Nights',
-    location: 'Ladakh - India',
-    title: '7 days Leh Ladakh road trip with Turtuk',
-    isNew: true,
-    originalPrice: '₹38,999',
-    discountedPrice: '₹26,999',
-    save: '₹12,000',
-  },
+//   {
+//     id: 3,
+//     image: './home.jpg',
+//     days: '9 Days / 8 Nights',
+//     location: 'Ladakh - India',
+//     title: 'Ladakh - Srinagar Expedition: 9 Days of Monasteries, Valleys, and Lakes',
+//     isNew: true,
+//     originalPrice: null,
+//     discountedPrice: 'Request Price',
+//     save: null,
+//   },
+//   {
+//     id: 4,
+//     image: '/home.jpg',
+//     days: '7 Days / 6 Nights',
+//     location: 'Ladakh - India',
+//     title: '7 days Leh Ladakh road trip with Turtuk',
+//     isNew: true,
+//     originalPrice: '₹38,999',
+//     discountedPrice: '₹26,999',
+//     save: '₹12,000',
+//   },
 
-   {
-    id: 5,
-    image: '/home.jpg',
-    days: '7 Days / 6 Nights',
-    location: 'Ladakh - India',
-    title: '7 days Leh Ladakh road trip with Turtuk',
-    isNew: true,
-    originalPrice: '₹38,999',
-    discountedPrice: '₹26,999',
-    save: '₹12,000',
-  },
-    {
-    id: 6,
-    image: '/home.jpg',
-    days: '7 Days / 6 Nights',
-    location: 'Ladakh - India',
-    title: '7 days Leh Ladakh road trip with Turtuk',
-    isNew: true,
-    originalPrice: '₹38,999',
-    discountedPrice: '₹26,999',
-    save: '₹12,000',
-  },
-    {
-    id: 7,
-    image: '/home.jpg',
-    days: '7 Days / 6 Nights',
-    location: 'Ladakh - India',
-    title: '7 days Leh Ladakh road trip with Turtuk',
-    isNew: true,
-    originalPrice: '₹38,999',
-    discountedPrice: '₹26,999',
-    save: '₹12,000',
-  },
-    {
-    id: 8,
-    image: '/home.jpg',
-    days: '7 Days / 6 Nights',
-    location: 'Ladakh - India',
-    title: '7 days Leh Ladakh road trip with Turtuk',
-    isNew: true,
-    originalPrice: '₹38,999',
-    discountedPrice: '₹26,999',
-    save: '₹12,000',
-  },
-    {
-    id: 9,
-    image: '/home.jpg',
-    days: '7 Days / 6 Nights',
-    location: 'Ladakh - India',
-    title: '7 days Leh Ladakh road trip with Turtuk',
-    isNew: true,
-    originalPrice: '₹38,999',
-    discountedPrice: '₹26,999',
-    save: '₹12,000',
-  },
-    {
-    id: 10,
-    image:'/home.jpg',
-    days: '7 Days / 6 Nights',
-    location: 'Ladakh - India',
-    title: '7 days Leh Ladakh road trip with Turtuk',
-    isNew: true,
-    originalPrice: '₹38,999',
-    discountedPrice: '₹26,999',
-    save: '₹12,000',
-  },
-];
+//    {
+//     id: 5,
+//     image: '/home.jpg',
+//     days: '7 Days / 6 Nights',
+//     location: 'Ladakh - India',
+//     title: '7 days Leh Ladakh road trip with Turtuk',
+//     isNew: true,
+//     originalPrice: '₹38,999',
+//     discountedPrice: '₹26,999',
+//     save: '₹12,000',
+//   },
+//     {
+//     id: 6,
+//     image: '/home.jpg',
+//     days: '7 Days / 6 Nights',
+//     location: 'Ladakh - India',
+//     title: '7 days Leh Ladakh road trip with Turtuk',
+//     isNew: true,
+//     originalPrice: '₹38,999',
+//     discountedPrice: '₹26,999',
+//     save: '₹12,000',
+//   },
+//     {
+//     id: 7,
+//     image: '/home.jpg',
+//     days: '7 Days / 6 Nights',
+//     location: 'Ladakh - India',
+//     title: '7 days Leh Ladakh road trip with Turtuk',
+//     isNew: true,
+//     originalPrice: '₹38,999',
+//     discountedPrice: '₹26,999',
+//     save: '₹12,000',
+//   },
+//     {
+//     id: 8,
+//     image: '/home.jpg',
+//     days: '7 Days / 6 Nights',
+//     location: 'Ladakh - India',
+//     title: '7 days Leh Ladakh road trip with Turtuk',
+//     isNew: true,
+//     originalPrice: '₹38,999',
+//     discountedPrice: '₹26,999',
+//     save: '₹12,000',
+//   },
+//     {
+//     id: 9,
+//     image: '/home.jpg',
+//     days: '7 Days / 6 Nights',
+//     location: 'Ladakh - India',
+//     title: '7 days Leh Ladakh road trip with Turtuk',
+//     isNew: true,
+//     originalPrice: '₹38,999',
+//     discountedPrice: '₹26,999',
+//     save: '₹12,000',
+//   },
+//     {
+//     id: 10,
+//     image:'/home.jpg',
+//     days: '7 Days / 6 Nights',
+//     location: 'Ladakh - India',
+//     title: '7 days Leh Ladakh road trip with Turtuk',
+//     isNew: true,
+//     originalPrice: '₹38,999',
+//     discountedPrice: '₹26,999',
+//     save: '₹12,000',
+//   },
+// ];
 
 const Features = () => {
   return (
-    <>
-      <section className="py-16 px-6 text-center bg-slate-600 text-black">
+    <div>
+      <section className="py-16 px-6 text-center bg-gray-100 text-black">
         <h2 className="text-4xl font-semibold text-secondary-600 mb-8 inline-block border-b-4 border-yellow-400 pb-3 text-shadow-md/30">
           Why Choose NepJourney?
         </h2>
@@ -160,7 +160,7 @@ const Features = () => {
       </section>
 
       {/* Trending Tours Section */}
-      <section className="px-4 py-10 md:px-20 bg-slate-600">
+      {/* <section className="px-4 py-10 md:px-20 bg-slate-600">
         <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-shadow-md/30 text-white">
           Trending <span className="border-b-4 border-yellow-500">Tours</span>
         </h2>
@@ -211,8 +211,8 @@ const Features = () => {
             </div>
           ))}
         </div>
-      </section>
-    </>
+      </section> */}
+    </div>
   );
 };
 

@@ -51,7 +51,7 @@ const tourData = [
   },
 
    {
-    id: 4,
+    id: 5,
     image: '/home.jpg',
     days: '7 Days / 6 Nights',
     location: 'Ladakh - India',
@@ -62,7 +62,7 @@ const tourData = [
     save: '₹12,000',
   },
     {
-    id: 4,
+    id: 6,
     image: '/home.jpg',
     days: '7 Days / 6 Nights',
     location: 'Ladakh - India',
@@ -73,7 +73,7 @@ const tourData = [
     save: '₹12,000',
   },
     {
-    id: 4,
+    id: 7,
     image: '/home.jpg',
     days: '7 Days / 6 Nights',
     location: 'Ladakh - India',
@@ -84,7 +84,7 @@ const tourData = [
     save: '₹12,000',
   },
     {
-    id: 4,
+    id: 8,
     image: '/home.jpg',
     days: '7 Days / 6 Nights',
     location: 'Ladakh - India',
@@ -95,7 +95,7 @@ const tourData = [
     save: '₹12,000',
   },
     {
-    id: 4,
+    id: 9,
     image: '/home.jpg',
     days: '7 Days / 6 Nights',
     location: 'Ladakh - India',
@@ -106,7 +106,7 @@ const tourData = [
     save: '₹12,000',
   },
     {
-    id: 4,
+    id: 10,
     image:'/home.jpg',
     days: '7 Days / 6 Nights',
     location: 'Ladakh - India',

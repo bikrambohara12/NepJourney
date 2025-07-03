@@ -15,7 +15,7 @@ const About = () => {
       image: "public/images/bikkuvai.jpg",
     },
     {
-      name: "Nikhil Pandey",
+      name: "name",
       title: "Engineering Manager",
       description: "Lead engineering teams at Figma, Pitch, and Protocol Labs.",
       image: "public/images/shadhaiva.jpg",
@@ -123,7 +123,7 @@ const About = () => {
                     <p className="text-gray-600 text-sm leading-relaxed">{member.description}</p>
                   </div>
                   <div className="flex justify-center space-x-4">
-                    <a href="#" className="text-gray-400 hover:text-purple-600" aria-label={`${member.name} Twitter`}><Twitter className="w-5 h-5" /></a>
+                    <a href="#" className="text-gray-400 hover:text-purple-600" aria-label={`${member.name} Twitter`}><Twitter  className="w-5 h-5" /></a>
                     <a href="#" className="text-gray-400 hover:text-purple-600" aria-label={`${member.name} LinkedIn`}><Linkedin className="w-5 h-5" /></a>
                     <a href="#" className="text-gray-400 hover:text-purple-600" aria-label={`${member.name} Website`}><Globe className="w-5 h-5" /></a>
                   </div>

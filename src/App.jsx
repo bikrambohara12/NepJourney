@@ -13,6 +13,9 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
+import Booking from './pages/Booking';
+
+
 const App = () => {
   return (
     <div className="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
@@ -27,6 +30,8 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+
+        <Route path="/booking/:guideId" element={<Booking />}/>
       </Routes>
 
       <Footer />

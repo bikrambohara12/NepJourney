@@ -9,11 +9,7 @@ const Navbar = () => {
     <header className="bg-[#2c3e50] text-white shadow-md fixed w-full z-50">
       <div className="flex justify-between items-center px-8 py-4">
         {/* Logo */}
-        <img
-          src="./logo.png"
-          alt="NepJourney Logo"
-          className="h-16 w-50 object-contain scale-235"
-        />
+        <img src="./logo.png" alt="NepJourney Logo" className="h-16 w-50 object-contain scale-235" />
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6">

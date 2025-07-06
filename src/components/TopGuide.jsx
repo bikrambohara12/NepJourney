@@ -61,7 +61,7 @@ const TopGuide = () => {
         {guides && guides.length > 0 ? (
           guides.slice(0, 10).map((item, index) => (
             <div
-              onClick={() => navigate(`/booking/${item._id}`)}
+             onClick={() => {navigate(`/booking/${item._id}`); scrollTo(0,0)}}
               className="border border-blue-300 rounded-2xl overflow-hidden cursor-pointer hover:-translate-y-3 transition-all duration-300 shadow-md"key={index}>
               <img className="bg-blue-50 w-full h-80 object-cover" src={item.image} alt={item.name || 'Guide'} />
               <div className="p-6">

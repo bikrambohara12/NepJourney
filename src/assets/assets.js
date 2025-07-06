@@ -1,4 +1,5 @@
 import bannerimage from './bannerimage.png'
+import verified_icon from './verified_icon.svg'
 // import header_img from './header_img.png'
 // import group_profiles from './group_profiles.png'
 // import profile_pic from './profile_pic.png'
@@ -9,7 +10,6 @@ import bannerimage from './bannerimage.png'
 // import menu_icon from './menu_icon.svg'
 // import cross_icon from './cross_icon.png'
 // import chats_icon from './chats_icon.svg'
-// import verified_icon from './verified_icon.svg'
 // import arrow_icon from './arrow_icon.svg'
 // import info_icon from './info_icon.svg'
 // import upload_icon from './upload_icon.png'
@@ -43,6 +43,7 @@ import guide14 from './guide14.jpg'
 
 export const assets ={
    bannerimage,
+   verified_icon,
 }
 
 // export const assets = {

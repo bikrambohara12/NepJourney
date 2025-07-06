@@ -1,54 +1,148 @@
+// import React, { useState } from 'react';
+// import { Link, useNavigate } from 'react-router-dom';
+// import { assets } from '../assets/assets';
+
+// const Navbar = () => {
+//   const [showMobileMenu, setShowMobileMenu] = useState(false);
+//   const navigate = useNavigate();
+
+
+//   const [showMenu, setShowMenu] = useState(false)
+//   const [taken,setToken] = useState(true)
+
+//   return (
+//     <header className="bg-[#2c3e50] text-white shadow-md fixed w-full z-50">
+      
+//       <div className="flex justify-between items-center px-8 py-4">
+//         {/* Logo */}
+//         {/* <img src="./logo.png" alt="NepJourney Logo" className="h-16 w-50 object-contain scale-235" /> */}
+//         <img className='w-10 cursor-pointer  ' src={assets.logo}alt="" />
+
+
+//         {/* Desktop Navigation */}
+//         <nav className="hidden md:flex gap-6">
+//           <Link to="/" className="hover:text-yellow-400 transition-colors">
+//             Home
+//           </Link>
+//           {/* <Link to="/destinations" className="hover:text-yellow-400 transition-colors">
+//             Destinations
+//           </Link> */}
+//           <Link to="/guides" className="hover:text-yellow-400 transition-colors">
+//             Guides
+//           </Link>
+//           <Link to="/about" className="hover:text-yellow-400 transition-colors">
+//             About
+//           </Link>
+//           <Link to="/contact" className="hover:text-yellow-400 transition-colors">
+//             Contact
+//           </Link>
+//         </nav>
+
+//         {/* Desktop Buttons */}
+//         <div className='flex items-center gap-4'>
+//           {
+//             token 
+//             ?<div className='fles items-center gap-2 cursor-pointer group relative'>
+//               <img className='w-8 rounded-full' src={assets.profile_pic} alt="" />
+//               <img className=' w-2.5' src={assets.dropdown_icon} alt="" />
+//               <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
+//                 <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4'>
+//                   <p onClick ={()=>navigate('my-profile')} className='hover:text-black cursor-pointer'>My Profile</p>
+//                   <p onClick ={()=>navigate('my-booking')}  className='hover:text-black cursor-pointer'>My Booking</p>
+//                   <p onClick={()=>setToken(false)} className='hover:text-black cursor-pointer'>Logout</p>
+//                 </div>
+//               </div>
+//             </div>
+//             :<button onClick={()=>navigate('/login')} className='bg-blue-600 text-white px-8 py-3 rounded-full font-light hidden md:block'>Create account </button>
+
+//           }
+//         </div>
+       
+//         {/* Hamburger Icon */}
+//         <img
+//           src="./menu.png"
+//           className="md:hidden w-7 cursor-pointer"
+//           alt="Menu"
+//           onClick={() => setShowMobileMenu(true)}
+//         />
+//       </div>
+
+//       {/* Mobile Menu */}
+//       {showMobileMenu && (
+//         <div className="md:hidden fixed inset-0 bg-[#2c3e50] text-white flex flex-col items-center justify-center gap-6 transition-all z-50">
+//           {/* Close Button */}
+//           <div
+//             className="absolute top-5 right-6 cursor-pointer"
+//             onClick={() => setShowMobileMenu(false)}
+//           >
+//             <img src="./close.png" className="w-6" alt="Close Menu" />
+//           </div>
+
+    
+
+        
+//         </div>
+//       )}
+//     </header>
+//   );
+// };
+
+// export default Navbar;
+
+
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { assets } from '../assets/assets';
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [token, setToken] = useState(true);
   const navigate = useNavigate();
 
   return (
     <header className="bg-[#2c3e50] text-white shadow-md fixed w-full z-50">
-      <div className="flex justify-between items-center px-8 py-4">
+      <div className="flex justify-between items-center px-6 py-4">
+        
         {/* Logo */}
-        <img src="./logo.png" alt="NepJourney Logo" className="h-16 w-50 object-contain scale-235" />
+        <div onClick={() => navigate('/')} className="cursor-pointer flex items-center gap-2">
+          <img className="w-12 h-auto object-contain" src={assets.logo} alt="NepJourney Logo" />
+          <h1 className="text-xl font-semibold hidden sm:block">NepJourney</h1>
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6">
-          <Link to="/" className="hover:text-yellow-400 transition-colors">
-            Home
-          </Link>
-          {/* <Link to="/destinations" className="hover:text-yellow-400 transition-colors">
-            Destinations
-          </Link> */}
-          <Link to="/guides" className="hover:text-yellow-400 transition-colors">
-            Guides
-          </Link>
-          <Link to="/about" className="hover:text-yellow-400 transition-colors">
-            About
-          </Link>
-          <Link to="/contact" className="hover:text-yellow-400 transition-colors">
-            Contact
-          </Link>
+          <Link to="/" className="hover:text-yellow-400 transition-colors">Home</Link>
+          <Link to="/guides" className="hover:text-yellow-400 transition-colors">Guides</Link>
+          <Link to="/about" className="hover:text-yellow-400 transition-colors">About</Link>
+          <Link to="/contact" className="hover:text-yellow-400 transition-colors">Contact</Link>
         </nav>
 
         {/* Desktop Buttons */}
-        <div className="hidden md:flex items-center gap-4">
-          <button
-            onClick={() => navigate('/login')}
-            className="px-4 py-2 border border-white text-white rounded hover:bg-white hover:text-[#2c3e50] transition-all ml-7"
-          >
-            Login
-          </button>
-          <button
-            onClick={() => navigate('/register')}
-            className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition-all ml-6"
-          >
-            Register
-          </button>
+        <div className="flex items-center gap-4">
+          {token ? (
+            <div className="flex items-center gap-2 cursor-pointer group relative">
+              <img className="w-8 h-8 rounded-full" src={assets.profile_pic} alt="Profile" />
+              <img className="w-2.5" src={assets.dropdown_icon} alt="Dropdown" />
+              <div className="absolute top-10 right-0 z-20 hidden group-hover:block">
+                <div className="min-w-48 bg-stone-100 text-gray-700 rounded shadow-md flex flex-col gap-2 p-4">
+                  <p onClick={() => navigate('/my-profile')} className="hover:text-black cursor-pointer">My Profile</p>
+                  <p onClick={() => navigate('/my-booking')} className="hover:text-black cursor-pointer">My Booking</p>
+                  <p onClick={() => setToken(false)} className="hover:text-black cursor-pointer">Logout</p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <button onClick={() => navigate('/login')} className="bg-blue-600 text-white px-6 py-2 rounded-full hidden md:block">
+              Create account
+            </button>
+          )}
         </div>
 
         {/* Hamburger Icon */}
         <img
-          src="./menu.png"
+          src={assets.menu_icon} // Make sure this exists in assets.js and is imported!
           className="md:hidden w-7 cursor-pointer"
           alt="Menu"
           onClick={() => setShowMobileMenu(true)}
@@ -57,71 +151,31 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {showMobileMenu && (
-        <div className="md:hidden fixed inset-0 bg-[#2c3e50] text-white flex flex-col items-center justify-center gap-6 transition-all z-50">
+        <div className="md:hidden fixed inset-0 bg-[#2c3e50] text-white flex flex-col items-center justify-center gap-6 z-50">
           {/* Close Button */}
           <div
             className="absolute top-5 right-6 cursor-pointer"
             onClick={() => setShowMobileMenu(false)}
           >
-            <img src="./close.png" className="w-6" alt="Close Menu" />
+            <img src={assets.cross_icon} className="w-6" alt="Close Menu" />
           </div>
 
-          {/* Menu Items */}
-          <Link
-            to="/"
-            className="text-lg hover:text-yellow-400 transition-colors"
-            onClick={() => setShowMobileMenu(false)}
-          >
-            Home
-          </Link>
-          <Link
-            to="/destinations"
-            className="text-lg hover:text-yellow-400 transition-colors"
-            onClick={() => setShowMobileMenu(false)}
-          >
-            Destinations
-          </Link>
-          <Link
-            to="/guides"
-            className="text-lg hover:text-yellow-400 transition-colors"
-            onClick={() => setShowMobileMenu(false)}
-          >
-            Guides
-          </Link>
-          <Link
-            to="/about"
-            className="text-lg hover:text-yellow-400 transition-colors"
-            onClick={() => setShowMobileMenu(false)}
-          >
-            About
-          </Link>
-          <Link
-            to="/contact"
-            className="text-lg hover:text-yellow-400 transition-colors"
-            onClick={() => setShowMobileMenu(false)}
-          >
-            Contact
-          </Link>
+          <Link to="/" onClick={() => setShowMobileMenu(false)}>Home</Link>
+          <Link to="/guides" onClick={() => setShowMobileMenu(false)}>Guides</Link>
+          <Link to="/about" onClick={() => setShowMobileMenu(false)}>About</Link>
+          <Link to="/contact" onClick={() => setShowMobileMenu(false)}>Contact</Link>
 
-          {/* Mobile Buttons */}
-          <button
-            onClick={() => {
-              setShowMobileMenu(false);
-              navigate('/login');
-            }}
-            className="w-2/5 px-2 py-2 border border-white text-white rounded hover:bg-white hover:text-[#2c3e50] transition-all"
-          >
-            Login
-          </button>
-          <button
-            onClick={() => {
-              setShowMobileMenu(false);
-              navigate('/register');
-            }}
-            className="w-2/5 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition-all"
-          >
-            Register
-          </button>
+          {!token && (
+            <button
+              onClick={() => {
+                navigate('/login');
+                setShowMobileMenu(false);
+              }}
+              className="bg-blue-600 text-white px-6 py-2 rounded-full"
+            >
+              Create account
+            </button>
+          )}
         </div>
       )}
     </header>

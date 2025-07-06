@@ -1,5 +1,8 @@
 import bannerimage from './bannerimage.png'
 import verified_icon from './verified_icon.svg'
+import logo from './logo.png'
+import profile_pic from './profile_pic.png'
+import dropdown_icon from './dropdown_icon.svg'
 // import header_img from './header_img.png'
 // import group_profiles from './group_profiles.png'
 // import profile_pic from './profile_pic.png'
@@ -44,6 +47,9 @@ import guide14 from './guide14.jpg'
 export const assets ={
    bannerimage,
    verified_icon,
+   logo,
+   profile_pic,
+   dropdown_icon,
 }
 
 // export const assets = {

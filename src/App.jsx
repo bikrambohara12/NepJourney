@@ -11,7 +11,7 @@ import Guides from './pages/Guides';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Login from './pages/Login';
-import Register from './pages/Register';
+// import Register from './pages/Register';
 
 import Booking from './pages/Booking';
 
@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/guides/:speciality" element={<Guides />}/>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/login" element={<Login />} />
 
         <Route path="/booking/:guideId" element={<Booking />}/>

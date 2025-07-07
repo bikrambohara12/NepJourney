@@ -11,6 +11,7 @@ import Guides from './pages/Guides';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Login from './pages/Login';
+import MyProfile from './pages/MyProfile';
 // import Register from './pages/Register';
 
 import Booking from './pages/Booking';
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/login" element={<Login />} />
+        <Route path='/my-profile' element={<MyProfile/>}/>
 
         <Route path="/booking/:guideId" element={<Booking />}/>
       </Routes>

@@ -97,7 +97,7 @@ import { assets } from '../assets/assets';
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
+  // const [showMenu, setShowMenu] = useState(false);
   const [token, setToken] = useState(true);
   const navigate = useNavigate();
 
@@ -108,7 +108,7 @@ const Navbar = () => {
         {/* Logo */}
         <div onClick={() => navigate('/')} className="cursor-pointer flex items-center gap-2">
           <img className="w-12 h-auto object-contain" src={assets.logo} alt="NepJourney Logo" />
-          <h1 className="text-xl font-semibold hidden sm:block">NepJourney</h1>
+          {/* <h1 className="text-xl font-semibold hidden sm:block">NepJourney</h1> */}
         </div>
 
         {/* Desktop Navigation */}
@@ -142,7 +142,7 @@ const Navbar = () => {
 
         {/* Hamburger Icon */}
         <img
-          src={assets.menu_icon} // Make sure this exists in assets.js and is imported!
+          src={assets.menu_icon} 
           className="md:hidden w-7 cursor-pointer"
           alt="Menu"
           onClick={() => setShowMobileMenu(true)}

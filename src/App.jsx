@@ -15,6 +15,7 @@ import MyProfile from './pages/MyProfile';
 // import Register from './pages/Register';
 
 import Booking from './pages/Booking';
+import MyBooking from './pages/MyBooking'; 
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
         {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path='/my-profile' element={<MyProfile/>}/>
+         <Route path="/my-booking" element={<MyBooking />}/>
 
         <Route path="/booking/:guideId" element={<Booking />}/>
       </Routes>

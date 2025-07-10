@@ -107,7 +107,7 @@ const Navbar = () => {
         
         {/* Logo */}
         <div onClick={() => navigate('/')} className="cursor-pointer flex items-center gap-2">
-          <img className="w-12 h-auto object-contain" src={assets.logo} alt="NepJourney Logo" />
+          <img className="w-12 h-12 object-contain" src={assets.logo} alt="NepJourney Logo" />
           {/* <h1 className="text-xl font-semibold hidden sm:block">NepJourney</h1> */}
         </div>
 

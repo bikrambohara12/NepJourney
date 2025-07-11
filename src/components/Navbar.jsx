@@ -106,10 +106,15 @@ const Navbar = () => {
       <div className="flex justify-between items-center px-6 py-4">
         
         {/* Logo */}
-        <div onClick={() => navigate('/')} className="cursor-pointer flex items-center gap-2">
+        {/* <div onClick={() => navigate('/')} className="cursor-pointer flex items-center gap-2">
           <img className="w-12 h-12 object-contain" src={assets.logo} alt="NepJourney Logo" />
-          {/* <h1 className="text-xl font-semibold hidden sm:block">NepJourney</h1> */}
-        </div>
+        </div> */}
+
+     {/* <div onClick={() => navigate('/')} className="cursor-pointer flex items-center gap-2"> */}
+  <img
+    className="w-12 h-12 object-contain scale-235" src="./logo.png"  alt="NepJourney Logo"/>
+{/* </div> */}
+
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6">

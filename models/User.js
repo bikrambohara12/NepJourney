@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 // User schema define garne
 const userSchema = new mongoose.Schema({
@@ -16,10 +16,15 @@ const userSchema = new mongoose.Schema({
     required: true, // true vaneko required ho, false optional ho 
     minlength: 6   //minimum length validation
   },
+  role: {
+    type: String,
+    enum: ['admin', 'guide', 'user'],
+    default: 'user'
+  }
 });
 
 // Schema bata model banaune
 const User = mongoose.model('User', userSchema);
 
 // out export areko
-module.exports = User;
+export default User;

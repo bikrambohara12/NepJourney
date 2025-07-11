@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 // Guide schema define garne
 const guideSchema = new mongoose.Schema({
@@ -18,4 +18,4 @@ const guideSchema = new mongoose.Schema({
 const Guide = mongoose.model('Guide', guideSchema);
 
 // export gareko
-module.exports = Guide;
+export default Guide;

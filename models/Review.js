@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 // Review schema define garne
 const reviewSchema = new mongoose.Schema({
@@ -25,4 +25,4 @@ const reviewSchema = new mongoose.Schema({
 const Review = mongoose.model('Review', reviewSchema);
 
 // export gareko
-module.exports = Review;
+export default Review;

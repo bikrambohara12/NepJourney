@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+import mongoose from "mongoose";
 // Tour schema define garne
 const tourSchema = new mongoose.Schema({
   title: {
@@ -24,4 +23,4 @@ const tourSchema = new mongoose.Schema({
 const Tour = mongoose.model('Tour', tourSchema);
 
 // export gareko
-module.exports = Tour;
+export default Tour;

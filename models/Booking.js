@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+import mongoose from "mongoose";
 // Booking schema define garne
 const bookingSchema = new mongoose.Schema({
   user: {
@@ -27,4 +26,4 @@ const bookingSchema = new mongoose.Schema({
 const Booking = mongoose.model('Booking', bookingSchema);
 
 // export gareko
-module.exports = Booking;
+export default Booking;

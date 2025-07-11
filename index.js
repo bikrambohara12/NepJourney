@@ -1,12 +1,14 @@
-const express = require('express');
-const mongoose = require('mongoose'); // mongoose use for MongoDB
-const User = require('./models/User'); //schema connect 
+import express from 'express';
+import mongoose from 'mongoose'; // mongoose use for MongoDB
+import router from './routes/index.js';
 
 const app = express();
+app.use(express.json());
+app.use("/", router);
 const PORT = 5000;
 
 // MongoDB connection URI (string)
-const uri = "mongodb+srv://amirbohara00:sHcJ1ZQZDr4GqZfM@cluster0.be8cyrr.mongodb.net/mydatabase?retryWrites=true&w=majority&appName=Cluster0";
+const uri = "mongodb+srv://amirbohara00:amir123@cluster0.be8cyrr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // MongoDB sang connect garne
 mongoose.connect(uri, {

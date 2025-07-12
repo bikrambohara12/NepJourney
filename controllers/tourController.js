@@ -25,11 +25,7 @@ const tourRouter = express.Router();
     });
 
   } catch (err) {
-    // Error aayepachi 500 (server error) sanga message pathauncha
-    res.status(500).json({
-      status: 'fail',       // error status
-      message: err.message  // error ko message pathaune
-    });
+   
   }
 });
 

@@ -1,29 +1,42 @@
 import mongoose from "mongoose";
-// Booking schema define garne
+
 const bookingSchema = new mongoose.Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId, // booking gareko user ko id lina
-    ref: 'User',  // User schema sanga connect gareko
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   tour: {
-    type: mongoose.Schema.Types.ObjectId, // booking gareko tour ko id
-    ref: 'Tour',   // Tour schema sanga connect gareko
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Tour',
     required: true
   },
   date: {
     type: Date,
-    required: true   // booking ko date required ho
+    required: true
+  },
+  time: {
+    type: String, 
+    required: true
+  },
+  contactNumber: {
+    type: String,
+    required: true
+  },
+  pickupLocation: {
+    type: String,
+    required: true
+  },
+  specialInstructions: {
+    type: String
   },
   status: {
     type: String,
     enum: ['pending', 'approved', 'cancelled', 'completed'],
-    default: 'pending' 
+    default: 'pending'
   }
 });
 
-// Schema bata model banaune
 const Booking = mongoose.model('Booking', bookingSchema);
 
-// export gareko
 export default Booking;

@@ -9,7 +9,7 @@ console.log("Guides:", guides);
 
 
   return (
-    <div className='pb-20 pt-30 py-15 px-20'>
+    <div className='pb-20 pt-20 py-15 px-20'>
       <p className='pb-3 mt-12 font-medium text-zinc-700 border-b'>My Booking</p>
       <div>
          {guides.slice(0,3).map((item,index)=>(

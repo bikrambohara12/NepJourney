@@ -13,11 +13,16 @@ const Navbar = () => {
   const {token,setToken} = useContext(AppContext)
   const navigate = useNavigate();
 
-  const logout =() =>{
-    setToken('false')
-    localStorage.removeItem('token')
-  }
+  // const logout =() =>{
+  //   setToken('false')
+  //   localStorage.removeItem('token')
+  // }
 
+   const handleLogout = () => {
+    localStorage.removeItem('token');
+    setToken(false);
+    navigate('/');
+  };
   return (
     <header className="bg-[#2c3e50] text-white shadow-md fixed w-full z-50">
       <div className="flex justify-between items-center px-8 py-4">
@@ -47,7 +52,7 @@ const Navbar = () => {
                 <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
                   <p onClick={() => navigate('/my-profile')} className="hover:text-black cursor-pointer">My Profile</p>
                   <p onClick={() => navigate('/my-booking')} className="hover:text-black cursor-pointer">My Booking</p>
-                  <p onClick={logout} className="hover:text-black cursor-pointer">Logout</p>
+                  <p onClick={handleLogout} className="hover:text-black cursor-pointer">Logout</p>
                 </div>
               </div>
             </div>

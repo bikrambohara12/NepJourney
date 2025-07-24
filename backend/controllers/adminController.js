@@ -64,7 +64,7 @@ const guideData = {
     fee,
     available: true, 
     address: JSON.parse(address),
-    date: new Date(), 
+   Date:Date.new()
 };
 
 

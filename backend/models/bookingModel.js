@@ -11,7 +11,14 @@ const bookingSchema = new mongoose.Schema({
     Date:{type:Number,required:true},
     cancelled:{type:Boolean,default:false},
     payment:{type:Boolean,default:false},
-    isCopleted:{type:Boolean,default:false}
+    isCopleted:{type:Boolean,default:false},
+    name: {type: String, required: true},
+    email: {type:String,required:true, unique:true},
+    phone: {type:String,default: "00000000000"},
+    notes:{ type: String, required: false},
+    location:{type:String,required:true},
+
+
 })
 
 const bookingModel = mongoose.models.booking || mongoose.model('booking',bookingSchema)

@@ -3,6 +3,9 @@ import bcrypt from 'bcrypt'
 import userModel from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary';
+import bookingModel from '../models/bookingModel.js';
+// import userModel from '../models/guideModel.js'
+
 
 
 // api to register to user
@@ -139,9 +142,68 @@ const updateProfile = async (req, res) => {
 };
 
 
+// Api for booki guide
+const bookGuide = async(req,res)=>{
+
+  try {
+
+    const{userId,guideId,slotDate,slotTime}=req.body
+
+    const guideData = await guideModel.findById(guideId).select('-password')
+
+    if (!guideData.available) {
+      return res.json({success:false,message:'Guide not available'})
+    }
+
+    let slots_booked = guideData.slots_booked
+
+    // checking for slot avalibality
+    if (slots_booked[slotDate]){
+      if (slots_booked[slotDate].includes(slotTime)) {
+        return res.json({success:false,message:'slot not available'})
+      }else{
+        slots_booked[slotDate].push(slotTime)
+      }
+    }else{
+      slots_booked[slotDate]=[]
+      slots_booked[slotDate].push(slotTime)
+    }
+
+    const userData = await userModel.findById(userId).select('-password')
+
+    delete guideData.slots_booked
+
+    const bookingData ={
+      userId,
+      guideId,
+      userData,
+      guideData,
+      amount:guideData.fees,
+      slotDate,
+      name,
+      email,
+      phone,
+     location,
+     notes,
+      date:Date.now()
+    }
+
+    const newBooking = new bookingModel(bookingData)
+    await newBooking.save()
+    
+
+    // save new slots data in guide data
+    await guideModel.findByIdAndUpdate(guideId,{slots_booked})
+
+    res.json({success:true,message:'guide booked'})
+    
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+}
 
 
-
-export {registerUser,loginUser,getProfile, updateProfile}
+export {registerUser,loginUser,getProfile, updateProfile,bookGuide}
 
 

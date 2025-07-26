@@ -38,15 +38,15 @@ const Guides = () => {
 
           {/* Search Bar */}
           <div className="mt-10 flex flex-wrap justify-center gap-4 px-4">
-            <input type="text" placeholder="Location" className="px-4 py-2 w-40 rounded-md text-black border border-gray-300" />
-            <input type="date" className="px-4 py-2 w-40 rounded-md text-black border border-gray-300" />
-            <select className="px-4 py-2 w-40 rounded-md text-black border border-gray-300">
+            <input type="text" placeholder="Location" className="px-4 py-2 w-40 rounded-md text-white border border-gray-300" />
+            <input type="date" className="px-4 py-2 w-40 rounded-md text-white border border-gray-300" />
+            <select className="px-4 py-2 w-40 rounded-md text-white border border-gray-300">
               <option value="">Language</option>
               <option value="english">English</option>
               <option value="french">French</option>
               <option value="spanish">Spanish</option>
             </select>
-            <input type="text" placeholder="Your Type" className="px-4 py-2 w-40 rounded-md text-black border border-gray-300" />
+            <input type="text" placeholder="Your Type" className="px-4 py-2 w-40 rounded-md text-white border border-gray-300" />
             <button className="px-6 py-2 bg-white text-black font-semibold rounded-md hover:bg-gray-200 border border-gray-300">
               Search
             </button>

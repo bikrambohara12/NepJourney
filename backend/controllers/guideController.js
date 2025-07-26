@@ -1,5 +1,4 @@
-import GuideModel from "../models/guideModel"
-
+import GuideModel from '../models/guideModel.js';
 
 const changeAvailability = async(req,res)=>{
     try {
@@ -16,4 +15,18 @@ const changeAvailability = async(req,res)=>{
     }
 }
 
-export{changeAvailability}
+
+const guideList = async(req,res)=>{
+
+    try {
+        const  guides = await GuideModel.find({}).select(['-password','-email'])
+
+        res.json({success:true,guides})
+        
+    } catch (error) {
+        console.log(error)
+        res.json({success:false,message:error.message})     
+    }
+}
+
+export{changeAvailability,guideList}

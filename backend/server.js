@@ -5,6 +5,7 @@ import connectDB from "./config/mongodb.js"
 import connectCloudinary from "./config/cloudinary.js"
 import adminRouter from "./routes/adminRoute.js"
 import userRouter from "./routes/userRoute.js"
+import guideRouter from "./routes/guideRoute.js"
 
 
 // app config 
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: true })); // 👈 ADD THIS
 app.use('/api/admin', adminRouter);
 
 app.use('/api/user',userRouter)
+app.use('/api/guide',guideRouter)
 
 app.get('/',(req,res)=>{
     res.send("API WORKING ")

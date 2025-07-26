@@ -163,6 +163,7 @@ const addGuide = async (req,res) => {
             language,         // Fixed: now properly included
             available: true,
             address,
+             available: true,
             // address: JSON.parse(address),
             date: Date.now()  // Fixed: was Date.new()
         };
@@ -196,4 +197,18 @@ const loginAdmin = async(req,res)=>{
     }
 }
 
-export {addGuide,loginAdmin}
+//Api to get all guide list for admin panel
+const allGuides = async(req,res)=>{
+
+    try {
+
+        const guides = await guideModel.find({}).select('-password')
+        res.json({success:true,guides})
+        
+    } catch (error) {
+      console.log(error)
+        res.json({success:false,message:error.message})  
+    }
+}
+
+export {addGuide,loginAdmin,allGuides}

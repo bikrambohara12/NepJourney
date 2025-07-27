@@ -1,101 +1,12 @@
-// import React, { useContext, useState } from 'react';
-// import { assets } from '../../assets/assets';
-// import { AdminContext } from '../../context/AdminContext';
-// import { toast } from 'react-toastify';
-// import axios from 'axios';
-
-// const AddGuide = () => {
-//   const [guideimage, setGuideImage] = useState(false);
-//   const [name, setName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [contact, setContact] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [experience, setExperience] = useState('1 year');
-//   const [fee, setFee] = useState('');
-//   const [about, setAbout] = useState('');
-//   const [speciality, setSpeciality] = useState('advantureguide');
-//   const [education, setEducation] = useState('');
-//   const [address1, setAddress1] = useState('');
-//   const [address2, setAddress2] = useState('');
-//   const [location, setLocation] = useState('');
-//   const [language, setLanguage] = useState('');
-//   const [loading, setLoading] = useState(false);
-
-//   const { backendUrl, aToken } = useContext(AdminContext);
-
-//   const onSubmitHandler = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-
-//     try {
-//       if (!guideimage) {
-//         setLoading(false);
-//         return toast.error('Image not selected');
-//       }
-
-//       if (!fee || isNaN(fee)) {
-//         setLoading(false);
-//         return toast.error('Fee must be a number');
-//       }
-
-//       const formData = new FormData();
-//       formData.append('image', guideimage);
-//       formData.append('name', name);
-//       formData.append('email', email);
-//       formData.append('password', password);
-//       formData.append('contact', contact);
-//       formData.append('experience', experience);
-//       formData.append('fee', Number(fee));
-//       formData.append('about', about);
-//       formData.append('speciality', speciality);
-//       formData.append('education', education);
-//       formData.append('address', `${address1}, ${address2}`);
-//       formData.append('location', location);
-//       formData.append('language', language);
-
-//       const { data } = await axios.post(backendUrl + '/api/admin/addguide', formData, {
-//         headers: { aToken }
-//       });
-
-//       setLoading(false);
-
-//       if (data.success) {
-//         toast.success(data.message);
-
-//         // Reset form fields
-//         setGuideImage(false);
-//         setName('');
-//         setEmail('');
-//         setPassword('');
-//         setAddress1('');
-//         setAddress2('');
-//         setEducation('');
-//         setAbout('');
-//         setFee('');
-//         setLocation('');
-//         setLanguage('');
-//         setContact('');
-//         setExperience('1 year');
-//         setSpeciality('advantureguide');
-//       } else {
-//         toast.error(data.message);
-//       }
-//     } catch (error) {
-//       setLoading(false);
-//       toast.error(error.message);
-//       console.error(error);
-//     }
-//   };
-
 import React, { useContext, useState } from 'react';
 import { assets } from '../../assets/assets';
 import { AdminContext } from '../../context/AdminContext';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import imageCompression from 'browser-image-compression'; // ✅ Import
+import imageCompression from 'browser-image-compression'; // Import
 
 const AddGuide = () => {
-  const [guideimage, setGuideImage] = useState(null); // ✅ Changed to null
+  const [guideimage, setGuideImage] = useState(null); 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [contact, setContact] = useState('');

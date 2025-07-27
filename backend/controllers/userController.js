@@ -208,6 +208,8 @@
 
 
 
+
+
 import validator from 'validator';
 import bcrypt from 'bcrypt';
 import userModel from '../models/userModel.js';
@@ -342,7 +344,7 @@ const updateProfile = async (req, res) => {
 
 // const bookGuide = async (req, res) => {
 //   try {
-//     const {    name, email, phone, location, notes } = req.body;
+//     const { userId, guideId, slotDate, slotTime, name, email, phone, location, notes } = req.body;
 
 //     const guideData = await GuideModel.findById(guideId).select('-password');
 
@@ -368,28 +370,19 @@ const updateProfile = async (req, res) => {
 
 //     const userData = await userModel.findById(userId).select('-password');
 
-//     // const bookingData = {
-//     //   userId,
-//     //   guideId,
-//     //   userData,
-//     //   guideData,
-//     //   amount: guideData.fees,
-//     //   slotDate,
-//     //   name,
-//     //   email,
-//     //   phone,
-//     //   location,
-//     //   notes,
-//     //   date: Date.now()
-//     // };
-
-//        const bookingData = {
+//     const bookingData = {
+//       userId,
+//       guideId,
+//       userData,
+//       guideData,
+//       amount: guideData.fees,
+//       slotDate,
 //       name,
 //       email,
 //       phone,
 //       location,
 //       notes,
-//       date
+      
 //     };
 
 //     const newBooking = new bookingModel(bookingData);
@@ -405,86 +398,94 @@ const updateProfile = async (req, res) => {
 //   }
 // };
 
-
-// ✅ Book Guide
-// const bookGuide = async (req, res) => {
-//   try {
-//     const { name, email, phone, location, notes, date } = req.body;
-
-//     // Basic validation
-//     if (!name || !email || !location || !date) {
-//       return res.status(400).json({ success: false, message: "Missing required fields" });
-//     }
-
-//     const bookingData = {
-//       name,
-//       email,
-//       phone,
-//       location,
-//       notes,
-//       date
-//     };
-
-//     const newBooking = new bookingModel(bookingData);
-//     await newBooking.save();
-
-//     res.status(201).json({ success: true, message: "Booking successful" });
-
-//   } catch (error) {
-//     console.error("Booking Error:", error);
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// };
-
 const bookGuide = async (req, res) => {
   try {
+    const userId = req.userId; // ✅ From auth middleware
+
     const {
-      fullName,
+      guideId,
+      slotDate,
+      name,
       email,
-      contactNumber,
-      pickupLocation,
-      instructions,
-      date,
-      guideId
+      phone,
+      location,
+      notes
     } = req.body;
 
-    // Optional: validate
-    if (!fullName || !email || !pickupLocation || !date) {
-      return res.status(400).json({
-        success: false,
-        message: "Missing fields",
-        missing: {
-          fullName: !fullName,
-          email: !email,
-          pickupLocation: !pickupLocation,
-          date: !date
-        }
-      });
+    if (!userId || !guideId || !slotDate || !name || !email || !location) {
+      return res.status(400).json({ success: false, message: "Missing required booking details" });
+    }
+  
+
+
+    const guideData = await GuideModel.findById(guideId).select('-password');
+    if (!guideData || !guideData.available) {
+      return res.json({ success: false, message: 'Guide not found or not available' });
     }
 
+      if (!guideData.fees) {
+  return res.json({ success: false, message: "Guide's fee is missing." });
+}
+
+console.log("Guide Data:", guideData);
+
+    const userData = await userModel.findById(userId).select('-password');
+
     const bookingData = {
-      name: fullName,
+      userId,
+      guideId,
+      userData,
+      guideData,
+      amount: guideData.fees,
+      slotDate,
+      name,
       email,
-      phone: contactNumber,
-      location: pickupLocation,
-      notes: instructions,
-      date
+      phone,
+      location,
+      notes
     };
 
     const newBooking = new bookingModel(bookingData);
     await newBooking.save();
 
-    res.status(201).json({ success: true, message: "Booking successful" });
-
+    res.json({ success: true, message: 'Guide booked successfully' });
   } catch (error) {
-    console.error("Booking Error:", error);
-    res.status(500).json({ success: false, message: error.message });
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+
+// API forr get user appoinments for frontend my-appointments page
+
+// const listBooking = async (req,res)=>{
+
+//   try {
+
+//     const userId = req.userId
+//     const Booking = await bookingModel.find({userId})
+
+//     res.json({success:true,Booking})
+    
+//   } catch (error) {
+//     console.log(error);
+//     res.json({ success: false, message: error.message });
+//   }
+// }
+
+const listBooking = async (req, res) => {
+  try {
+    const userId = req.userId; 
+    const Booking = await bookingModel.find({ userId });
+    res.json({ success: true, booking: Booking }); 
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
   }
 };
 
 
 
-
-export {registerUser, loginUser, getProfile, updateProfile, bookGuide};
+export { registerUser, loginUser, getProfile, updateProfile, bookGuide, listBooking};
 
 

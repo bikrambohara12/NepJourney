@@ -29,45 +29,94 @@ const Booking = () => {
 
 
 
-  const bookGuide = async () => {
-    if (!token) {
-      toast.warn("Please login first");
-      return navigate('/login');
-    }
+//   const bookGuide = async () => {
+//     if (!token) {
+//       toast.warn("Please login first");
+//       return navigate('/login');
+//     }
 
-    if (!date || !fullName || !email || !contactNumber || !pickupLocation) {
-      toast.warn("Please fill in all required fields");
-      return;
-    }
+//     if (!date || !fullName || !email || !contactNumber || !pickupLocation) {
+//       toast.warn("Please fill in all required fields");
+//       return;
+//     }
 
-    try {
-      const selectedDate = new Date(date);
-      const day = selectedDate.getDate();
-      const month = selectedDate.getMonth() + 1;
-      const year = selectedDate.getFullYear();
-      const slotDate = `${day}_${month}_${year}`;
+//     try {
+//       const selectedDate = new Date(date);
+//       const day = selectedDate.getDate();
+//       const month = selectedDate.getMonth() + 1;
+//       const year = selectedDate.getFullYear();
+//       const slotDate = `${day}_${month}_${year}`;
       
-    const {data} = await axios.post(backendUrl +'/api/user/bookguide',{guideId,date: slotDate,  fullName, email, contactNumber, pickupLocation, instructions},{
-  headers: {
-    Authorization: `Bearer ${token}`
-  }
-})
+//     const {data} = await axios.post(backendUrl +'/api/user/bookguide',{guideId,date: slotDate,  fullName, email, contactNumber, pickupLocation, instructions},{
+//   headers: {
+//     Authorization: `Bearer ${token}`
+//   }
+// })
       
 
-      if (data.success) {
-        toast.success(data.message);
-        getGuidesData();
-        navigate('/my-booking');
-      } else {
-        toast.error(data.message);
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message || "Something went wrong");
-    }
-  };
+//       if (data.success) {
+//         toast.success(data.message);
+//         getGuidesData();
+//         navigate('/my-booking');
+//       } else {
+//         toast.error(data.message);
+//       }
+//     } catch (error) {
+//       console.log(error);
+//       toast.error(error.message || "Something went wrong");
+//     }
+//   };
   
  
+const bookGuide = async () => {
+  if (!token) {
+    toast.warn("Please login first");
+    return navigate('/login');
+  }
+
+  if (!date || !fullName || !email || !contactNumber || !pickupLocation) {
+    toast.warn("Please fill in all required fields");
+    return;
+  }
+
+  try {
+    const selectedDate = new Date(date);
+    const day = selectedDate.getDate();
+    const month = selectedDate.getMonth() + 1;
+    const year = selectedDate.getFullYear();
+    const slotDate = `${day}_${month}_${year}`;
+
+    const response = await axios.post(`${backendUrl}/api/user/bookguide`, {
+      guideId,
+      slotDate,
+      name: fullName,
+      email,
+      phone: contactNumber,
+      location: pickupLocation,
+      notes: instructions
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = response.data;
+
+    if (data.success) {
+      toast.success(data.message);
+      getGuidesData();
+      navigate('/my-booking');
+    } else {
+      toast.error(data.message);
+    }
+
+  } catch (error) {
+    console.error(error);
+    toast.error(error.message || "Something went wrong");
+  }
+};
+
+
 
 useEffect(() => {
   if (guides && guideId) {
@@ -80,9 +129,6 @@ useEffect(() => {
   }
 }, [guides, guideId]);
 console.log("Current guideId from URL:", guideId);
-
-
-console.log("Received Booking Data:",);
 
 
 

@@ -13,6 +13,8 @@ const AdminContextProvider = (props) => {
 
     const [booking,setBooking] = useState([])
 
+    const [dashData, setDashData] = useState(false)
+
 
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL
@@ -89,6 +91,22 @@ const AdminContextProvider = (props) => {
         }
     }
 
+    const getDashData = async()=>{
+        try {
+
+            const{data} = await axios.get(backendUrl+'/api/admin/dashboard',{headers:{aToken}})
+
+            if (data.success) {
+                setDashData(data.dashData) 
+                console.log (data.dashData)       
+            }else{
+                toast.error(data.message)
+            }   
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
     const value = {
   aToken, setAToken,
   backendUrl, guides,
@@ -96,6 +114,7 @@ const AdminContextProvider = (props) => {
   booking, setBooking,
   getAllBooking,
   cancelBooking,
+  dashData,getDashData,
 };
 
 

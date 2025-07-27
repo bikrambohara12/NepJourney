@@ -117,6 +117,8 @@ import {v2 as cloudinary} from 'cloudinary'
 import guideModel from '../models/guideModel.js'
 import jwt from 'jsonwebtoken'
 import bookingModel from '../models/bookingModel.js'
+import userModel from '../models/userModel.js';
+
 
 // api for adding guide
 const addGuide = async (req,res) => {
@@ -255,5 +257,30 @@ const bookingCancel = async (req, res) => {
   }
 };
 
+// API to get dashboard data for admin panel
+const adminDashboard = async(req,res)=>{
 
-export {addGuide,loginAdmin,allGuides,bookingAdmin,bookingCancel}
+
+    try {
+
+        const guides = await guideModel.find({})
+        const users = await userModel.find({})
+        const booking = await bookingModel.find({})
+
+        const dashData = {
+            guides:guides.length,
+            booking:booking.length,
+            users:users.length,
+            latestBooking: booking.reverse().slice(0,5)
+        }
+
+        res.json({success:true,dashData})
+        
+    } catch (error) {
+      console.log(error);
+    res.json({ success: false, message: error.message });  
+    }
+}
+
+
+export {addGuide,loginAdmin,allGuides,bookingAdmin,bookingCancel,adminDashboard}

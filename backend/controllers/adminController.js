@@ -211,4 +211,16 @@ const allGuides = async(req,res)=>{
     }
 }
 
-export {addGuide,loginAdmin,allGuides}
+//API to get all booking list for admin panel
+const allBookings = async(req,res)=>{
+    try {
+        const bookings = await bookingModel.find({})
+        res.json({success:true,bookings})
+    } catch (error) {
+        console.log(error)
+        res.json({success:false,message:error.message})
+    }
+}
+
+
+export {addGuide,loginAdmin,allGuides,bookingAdmin}

@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 
 const Dashboard = () => {
+
+  const {aToken, getDashData, cancelBooking, dashData} = useContext(AdminContext) 
+   
+  useEffect(() => {
+    if (aToken) {
+      getDashData()
+    }
+  }, [aToken])
+
+
   return (
     <div>
-      this is the dashboard
+      
     </div>
   )
 }

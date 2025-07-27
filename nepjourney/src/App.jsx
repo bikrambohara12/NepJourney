@@ -17,7 +17,6 @@ import MyProfile from './pages/MyProfile';
 import Booking from './pages/Booking';
 import MyBooking from './pages/MyBooking'; 
 
-
 const App = () => {
   return (
     <div className="bg-gray-100 text-gray-800 min-h-screen flex flex-col">

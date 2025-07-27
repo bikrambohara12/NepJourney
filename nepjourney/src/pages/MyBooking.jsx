@@ -34,6 +34,36 @@ const MyBooking = () => {
     }
   }
 
+  const cancelBooking = async(bookingId)=>{
+
+    try {
+      // const {data} = await axios.post(backendUrl+'/api/user/cancelbooking',{bookingId},{headers:{token}})
+        const { data } = await axios.post(
+      `${backendUrl}/api/user/cancelbooking`,
+      { bookingId },
+      {
+        headers: {
+          Authorization: `Bearer ${token}` // ✅ Correct way to send token
+        }
+      }
+    );
+      if (data.success) {
+        toast.success(data.message)
+        getUserBooking()
+      }else{
+        toast.error(data.message||"Failed to cancel booking")
+      }
+
+
+
+            
+    } catch (error) {
+      console.error(error)
+      toast.error(error.response?.data?.message || error.message)
+    }
+
+  }
+
   useEffect(() => {
     if (token) {
       getUserBooking()
@@ -56,8 +86,7 @@ const MyBooking = () => {
               <img
                 className='w-32 h-28 object-cover rounded-md'
                 src={item.guideData?.image}
-                alt={item.guideData?.name || 'Guide'}
-              />
+                alt={item.guideData?.name || 'Guide'} />
             </div>
             <div className='flex-1 text-sm text-zinc-600'>
               <p className='text-neutral-800 font-semibold text-base'>
@@ -83,12 +112,9 @@ const MyBooking = () => {
               </p>
             </div>
             <div className='flex flex-col gap-2 justify-end'>
-              <button className='text-sm text-stone-500 text-center py-2 border rounded hover:bg-blue-600 hover:text-white transition-all duration-300'>
-                Pay Online
-              </button>
-              <button className='text-sm text-stone-500 text-center py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300'>
-                Cancel Booking
-              </button>
+             {!item.cancelled && <button className='text-sm text-stone-500 text-center py-2 border rounded hover:bg-blue-600 hover:text-white transition-all duration-300'> Pay Online </button>} 
+             {!item.cancelled && <button onClick={()=>cancelBooking(item._id)} className='text-sm text-stone-500 text-center py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300'>Cancel Booking </button>} 
+             {item.cancelled && <button className='sm:min-w-48 py-2 border border-red-500 text-red-500 '>Booking cancelled</button>}
             </div>
           </div>
         ))

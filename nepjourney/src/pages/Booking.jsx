@@ -86,7 +86,7 @@ const bookGuide = async () => {
     const year = selectedDate.getFullYear();
     const slotDate = `${day}_${month}_${year}`;
 
-    const response = await axios.post(`${backendUrl}/api/user/bookguide`, {
+    const response = await axios.post(`${backendUrl}/api/user/book-guide`, {
       guideId,
       slotDate,
       name: fullName,

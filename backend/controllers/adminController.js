@@ -116,6 +116,7 @@ import bcrypt from 'bcrypt'
 import {v2 as cloudinary} from 'cloudinary'
 import guideModel from '../models/guideModel.js'
 import jwt from 'jsonwebtoken'
+import bookingModel from '../models/bookingModel.js'
 
 // api for adding guide
 const addGuide = async (req,res) => {
@@ -155,17 +156,17 @@ const addGuide = async (req,res) => {
             image: imageUrl,
             password: hashedPassword,
             speciality,
-            education,        // Fixed: was 'degree'
+            education,        
             experience,
             about,
             fees:fee,
-            location,         // Fixed: now properly included
-            language,         // Fixed: now properly included
+            location,         
+            language,         
             available: true,
             address,
              available: true,
-            // address: JSON.parse(address),
-            date: Date.now()  // Fixed: was Date.new()
+           
+            date: Date.now()  
         };
 
         const newGuide = new guideModel(guideData)
@@ -211,4 +212,48 @@ const allGuides = async(req,res)=>{
     }
 }
 
-export {addGuide,loginAdmin,allGuides}
+// Api to get all booking list
+const bookingAdmin = async(req,res)=>{
+
+    try {
+
+        const booking = await bookingModel.find({})
+        res.json({success:true,booking})
+        
+    } catch (error) {
+        console.log(error)
+        res.json({success:false,message:error.message}) 
+    }
+}
+
+// canceld booking to admin
+
+const bookingCancel = async (req, res) => {
+  try {
+    const bookingId = req.body.bookingId;
+
+    const bookingData = await bookingModel.findById(bookingId);
+
+
+    await bookingModel.findByIdAndUpdate(bookingId, { cancelled: true });
+
+    const { guideId, slotDate, slotTime } = bookingData;
+    const guideData = await guideModel.findById(guideId);
+
+    let slots_booked = guideData.slots_booked;
+    if (slots_booked && slots_booked[slotDate]) {
+      slots_booked[slotDate] = slots_booked[slotDate].filter(e => e !== slotTime);
+    }
+
+    await guideModel.findByIdAndUpdate(guideId, { slots_booked });
+
+    res.json({ success: true, message: "Booking cancelled successfully" });
+
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+
+export {addGuide,loginAdmin,allGuides,bookingAdmin,bookingCancel}

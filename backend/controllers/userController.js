@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import { v2 as cloudinary } from 'cloudinary';
 import GuideModel from '../models/guideModel.js'; 
 import bookingModel from '../models/bookingModel.js';
-
+import crypto from 'crypto';
 
 
 // ✅ Register User
@@ -243,7 +243,50 @@ const cancelBooking = async (req, res) => {
 };
 
 
-// 
+// payment
+
+export const initializeEsewa = async (req, res) => {
+  try {
+    const { orderId, totalPrice } = req.body;
+
+    const transaction_uuid = orderId;
+    const product_code = process.env.ESEWA_PRODUCT_CODE;
+    const secretKey = process.env.ESEWA_SECRET_KEY;
+
+    const dataToSign = `total_amount=${totalPrice},transaction_uuid=${transaction_uuid},product_code=${product_code}`;
+
+    const signature = crypto
+      .createHmac('sha256', secretKey)
+      .update(dataToSign)
+      .digest('base64');
+
+    const paymentData = {
+      amount: totalPrice,
+      transaction_uuid,
+      product_code,
+      success_url: 'http://localhost:5173/payment-success',
+      failure_url: 'http://localhost:5173/payment-failure',
+      signed_field_names: 'total_amount,transaction_uuid,product_code',
+      signature
+    };
+
+    res.json({
+      success: true,
+      payment: paymentData,
+      purchasedItemData: {
+        _id: orderId,
+        totalPrice
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to initialize eSewa payment'
+    });
+  }
+};
+
 
 
 export { registerUser, loginUser, getProfile, updateProfile, bookGuide, listBooking, cancelBooking};

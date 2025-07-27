@@ -46,6 +46,7 @@ const guideSchema = new mongoose.Schema({
   language: { type: String, required: true },
   about: { type: String, required: true },
   image: { type: String, required: true },
+  available: { type: Boolean, default: true },
 });
 
 const GuideModel = mongoose.model("Guide", guideSchema);

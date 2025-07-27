@@ -1,57 +1,57 @@
 
-import React, { useEffect, useState } from "react";
-import { AppContext } from "./AppContext";
-// import { guides } from "../assets/assets";
-import { toast } from "react-toastify";
-import axios from "axios";
+// import React, { useEffect, useState } from "react";
+// import { AppContext } from "./AppContext";
+// // import { guides } from "../assets/assets";
+// import { toast } from "react-toastify";
+// import axios from "axios";
 
 
-const AppContextProvider = ({ children }) => {
+// const AppContextProvider = ({ children }) => {
 
-const currencySymbol ="$"
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
-const [guides,setGuides] = useState([])
+// const currencySymbol ="$"
+// const backendUrl = import.meta.env.VITE_BACKEND_URL;
+// const [guides,setGuides] = useState([])
 
- const value = {
-    guides,
-    currencySymbol,
-    // token,
-    // setToken,
-    backendUrl
-  };
+//  const value = {
+//     guides,
+//     currencySymbol,
+//     // token,
+//     // setToken,
+//     backendUrl
+//   };
 
-  const getGuidesData = async () =>{
+//   const getGuidesData = async () =>{
 
-    try {
+//     try {
 
-      const{data} = await axios.get(backendUrl+ '/api/guide/list')
-     if (data.success) {
-      setGuides(data.guides)
+//       const{data} = await axios.get(backendUrl+ '/api/guide/list')
+//      if (data.success) {
+//       setGuides(data.guides)
       
-     }else{
-      toast.error(data.message)
-     }
+//      }else{
+//       toast.error(data.message)
+//      }
       
-    } catch (error) {
-      console.log(error)
-      toast.error(error.message)
+//     } catch (error) {
+//       console.log(error)
+//       toast.error(error.message)
       
-    }
-  }
+//     }
+//   }
 
-  useEffect(()=>{
-    getGuidesData();
-  },[]);
+//   useEffect(()=>{
+//     getGuidesData();
+//   },[]);
     
-  return (
-    <AppContext.Provider value={value}>
+//   return (
+//     <AppContext.Provider value={value}>
       
-      {children}
-    </AppContext.Provider>
-  );
-};
+//       {children}
+//     </AppContext.Provider>
+//   );
+// };
 
-export default AppContextProvider;
+// export default AppContextProvider;
 
 
 
@@ -292,7 +292,110 @@ export default AppContextProvider;
 //     loadUserProfileData,
 //   };
 
+//     const getGuidesData = async () =>{
+
+//     try {
+
+//       const{data} = await axios.get(backendUrl+ '/api/guide/list')
+//      if (data.success) {
+//       setGuides(data.guides)
+      
+//      }else{
+//       toast.error(data.message)
+//      }
+      
+//     } catch (error) {
+//       console.log(error)
+//       toast.error(error.message)
+      
+//     }
+//   }
+
+//   useEffect(()=>{
+//     getGuidesData();
+//   },[]);
+
 //   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 // };
 
 // export default AppContextProvider;
+
+
+import React, { useState, useEffect, useCallback } from "react";
+import { AppContext } from "./AppContext";
+import { toast } from "react-toastify";
+import axios from "axios";
+
+const AppContextProvider = ({ children }) => {
+  const currencySymbol = "$";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+  const [token, setToken] = useState(localStorage.getItem("token") || false);
+  const [userData, setUserData] = useState(false);
+  const [guides, setGuides] = useState([]);
+
+  // ✅ Fetch all guide data
+  const getGuidesData = useCallback(async () => {
+    try {
+      const { data } = await axios.get(`${backendUrl}/api/guide/list`);
+      if (data.success) {
+        setGuides(data.guides);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to fetch guides");
+    }
+  }, [backendUrl]);
+
+  // ✅ Load user profile data
+  const loadUserProfileData = useCallback(async () => {
+    try {
+      const { data } = await axios.get(`${backendUrl}/api/user/getprofile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (data.success) {
+        setUserData(data.userData);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message);
+    }
+  }, [backendUrl, token]);
+
+  // ✅ On token change, load profile
+  useEffect(() => {
+    if (token) {
+      loadUserProfileData();
+    } else {
+      setUserData(false);
+    }
+  }, [token, loadUserProfileData]);
+
+  // ✅ Load guide data on mount
+  useEffect(() => {
+    getGuidesData();
+  }, [getGuidesData]);
+
+  const value = {
+    guides,
+    getGuidesData,
+    currencySymbol,
+    token,
+    setToken,
+    backendUrl,
+    userData,
+    setUserData,
+    loadUserProfileData,
+  };
+
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+};
+
+export default AppContextProvider;

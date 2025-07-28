@@ -133,4 +133,4 @@ const AdminDashboard = async(req,res)=>{
     }
 }
 
-export {addGuide,loginAdmin,allGuides,bookingAdmin,adminDashboard}
+export {addGuide,loginAdmin,allGuides,bookingAdmin, allBookings, AdminDashboard}

@@ -176,7 +176,7 @@ const Login = () => {
                  if (data.success) {
                     localStorage.setItem('dToken', data.token);
                     setDToken(data.token);
-                    toast.success("Login Successful");
+                    // toast.success("Login Successful");
                     console.log(data.token);
                 } else {
                     toast.error(data.message);

@@ -35,8 +35,8 @@ import mongoose from "mongoose";
 const guideSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
-  contact: { type: String, required: true },
   password: { type: String, required: true },
+  contact: { type: String, required: true },
   experience: { type: String, required: true },
   fees: { type: Number, required: true },
   speciality: { type: String, required: true },

@@ -107,6 +107,12 @@ const AdminContextProvider = (props) => {
         }
     }
 
+    const logoutAdmin = () => {
+  localStorage.removeItem('aToken');
+  setAToken('');
+};
+
+
     const value = {
   aToken, setAToken,
   backendUrl, guides,
@@ -115,6 +121,7 @@ const AdminContextProvider = (props) => {
   getAllBooking,
   cancelBooking,
   dashData,getDashData,
+   logoutAdmin ,
 };
 
 

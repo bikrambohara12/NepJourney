@@ -145,6 +145,7 @@ import React, { useState, useContext } from 'react';
 import { AdminContext } from '../context/AdminContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { GuideContext } from '../context/GuideContext';
 
 const Login = () => {
     const [state, setState] = useState('Admin');
@@ -153,6 +154,8 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     const { setAToken, backendUrl } = useContext(AdminContext);
+    const {setDToken} =useContext(GuideContext)
+
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
@@ -168,7 +171,16 @@ const Login = () => {
                     toast.error(data.message);
                 }
             } else {
-                toast.info("Guide login not implemented");
+                // toast.info("Guide login not implemented");
+                const {data} = await axios.post(backendUrl +'/api/guide/login',{email,password})
+                 if (data.success) {
+                    localStorage.setItem('dToken', data.token);
+                    setDToken(data.token);
+                    toast.success("Login Successful");
+                    console.log(data.token);
+                } else {
+                    toast.error(data.message);
+                }
             }
         } catch (err) {
             console.log(err);

@@ -39,11 +39,17 @@ import Dashboard from './pages/Admin/Dashboard';
 import AllBooking from './pages/Admin/AllBooking';
 import AddGuide from './pages/Admin/AddGuide';
 import GuideList from './pages/Admin/GuideList';
+import { GuideContext } from './context/GuideContext';
+import GuideDashboard from './pages/Guide/GuideDashboard';
+import GuideBooking from './pages/Guide/GuideBooking';
+import GuideProfile from './pages/Guide/GuideProfile';
 
 const App = () => {
   const { aToken } = useContext(AdminContext);
+  const{dToken} = useContext(GuideContext)
 
-  return aToken ? (
+
+  return aToken || dToken? (
     <div className='bg-[#F8F9FD]'>
       <ToastContainer />
       <Navbar />
@@ -52,11 +58,20 @@ const App = () => {
 
 
         <Routes>
+          {/* {admin routes} */}
           <Route path='/' element={<></>}/>
           <Route path='/admin-dashboard' element={<Dashboard/>}/>
           <Route path='/all-booking' element={<AllBooking/>}/>
           <Route path='/add-guide' element={<AddGuide/>}/>
           <Route path='/guide-list' element={<GuideList/>}/>
+
+          {/* {guide routes} */}
+          <Route path='/guide-dashboard' element={<GuideDashboard/>}/>
+          <Route path='/guide-booking' element={<GuideBooking/>}/>
+          <Route path='/guide-profile' element={<GuideProfile/>}/>
+
+
+
         </Routes>
 
       </div>

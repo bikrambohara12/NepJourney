@@ -3,7 +3,6 @@ import axios from "axios";
 import { createContext,useState} from "react";
 import { toast } from "react-toastify";
 
-
 export const AdminContext = createContext();
 
 const AdminContextProvider = (props) => {
@@ -14,8 +13,6 @@ const AdminContextProvider = (props) => {
     const [booking,setBooking] = useState([])
 
     const [dashData, setDashData] = useState(false)
-
-
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -111,7 +108,6 @@ const AdminContextProvider = (props) => {
   localStorage.removeItem('aToken');
   setAToken('');
 };
-
 
     const value = {
   aToken, setAToken,

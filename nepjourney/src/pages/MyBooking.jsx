@@ -52,19 +52,13 @@ const MyBooking = () => {
         getUserBooking()
       }else{
         toast.error(data.message||"Failed to cancel booking")
-      }
-
-
-
-            
+      }     
     } catch (error) {
       console.error(error)
       toast.error(error.response?.data?.message || error.message)
     }
 
   }
-  
-
   useEffect(() => {
     if (token) {
       getUserBooking()

@@ -70,7 +70,6 @@ const completeBooking = async(bookingId)=>{
   }
 }
 
-
 const cancelBooking = async(bookingId)=>{
 
   try {
@@ -133,7 +132,6 @@ const getProfileData = async()=>{
     toast.error(error.message);
   }
 }
-
 
     const value = {
         dToken,setDToken,

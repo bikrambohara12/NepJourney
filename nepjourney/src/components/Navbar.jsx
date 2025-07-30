@@ -20,13 +20,7 @@ const Navbar = () => {
     <header className="bg-[#2c3e50] text-white shadow-md fixed w-full z-50">
       <div className="flex justify-between items-center px-8 py-4">
         {/* Logo */}
-        <img
-          className="w-10 cursor-pointer"
-          src={assets.logo}
-          alt="NepJourney Logo"
-          onClick={() => navigate('/')}
-        />
-
+    <img className='h-30 w-40 scale-270 sm:h-14 cursor-pointer  transition-all duration-300 hover:brightness-110 filter object-contain' src={assets.nep_logo}  alt="Logo" />
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6">
           <Link to="/" className="hover:text-yellow-400 transition-colors">Home</Link>
@@ -50,22 +44,13 @@ const Navbar = () => {
               </div>
             </div>
           ) : (
-            <button
-              onClick={() => navigate('/login')}
-              className="bg-blue-600 text-white px-8 py-3 rounded-full font-light hidden md:block"
-            >
-              Create account
+            <button onClick={() => navigate('/login')} className="bg-blue-600 text-white px-8 py-3 rounded-full font-light hidden md:block" > Create account
             </button>
           )}
         </div>
 
         {/* Hamburger Icon */}
-        <img
-          src={assets.menu_icon}
-          className="md:hidden w-7 cursor-pointer"
-          alt="Menu"
-          onClick={() => setShowMobileMenu(true)}
-        />
+        <img src={assets.menu_icon} className="md:hidden w-7 cursor-pointer" alt="Menu" onClick={() => setShowMobileMenu(true)} />
       </div>
 
       {/* Mobile Menu */}
@@ -74,8 +59,7 @@ const Navbar = () => {
           {/* Close Button */}
           <div
             className="absolute top-5 right-6 cursor-pointer"
-            onClick={() => setShowMobileMenu(false)}
-          >
+            onClick={() => setShowMobileMenu(false)} >
             <img src={assets.close_icon} className="w-6" alt="Close Menu" />
           </div>
 
@@ -91,12 +75,8 @@ const Navbar = () => {
               <p onClick={() => { setToken(false); setShowMobileMenu(false); }}>Logout</p>
             </div>
           ) : (
-            <button
-              onClick={() => { navigate('/login'); setShowMobileMenu(false); }}
-              className="bg-blue-600 text-white px-6 py-2 rounded-full"
-            >
-              Create account
-            </button>
+            <button onClick={() => { navigate('/login'); setShowMobileMenu(false); }}
+              className="bg-blue-600 text-white px-6 py-2 rounded-full" > Create account </button>
           )}
         </div>
       )}

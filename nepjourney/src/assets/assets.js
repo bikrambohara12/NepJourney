@@ -4,29 +4,13 @@ import logo from './logo.png'
 import profile_pic from './profile_pic.png'
 import dropdown_icon from './dropdown_icon.svg'
 import menu_icon from './menu_icon.svg'
-// import header_img from './header_img.png'
-// import group_profiles from './group_profiles.png'
-// import profile_pic from './profile_pic.png'
-// import contact_image from './contact_image.png'
-// import about_image from './about_image.png'
-// import logo from './logo.svg'
-// import dropdown_icon from './dropdown_icon.svg'
-// import cross_icon from './cross_icon.png'
-// import chats_icon from './chats_icon.svg'
-// import arrow_icon from './arrow_icon.svg'
-// import info_icon from './info_icon.svg'
-// import upload_icon from './upload_icon.png'
-// import stripe_logo from './stripe_logo.png'
-// import razorpay_logo from './razorpay_logo.png'
-
+import nep_logo from './nep_logo.svg'
 import cultureguide from './cultureguide.png';
 import localguide from './localguide.png';
 import familyguide from './familyguide.png';
 import natureguide from './natureguides.png'; 
 import luxoryguide from './luaxoryguide.png'; 
 import advantureguide from './advantureguide.png';
-
-
 
 import guide1 from './guide1.jpg'
 import guide2 from './guide2.jpg'
@@ -43,6 +27,7 @@ import guide12 from './guide12.jpg'
 import guide13 from './guide13.jpg'
 import guide14 from './guide14.jpg'
 import Contact from '../pages/Contact'
+import guideimg from './guideimg.png'
 
 
 export const assets ={
@@ -52,26 +37,10 @@ export const assets ={
    profile_pic,
    dropdown_icon,
     menu_icon,
+    nep_logo,
+    guideimg,
 }
 
-// export const assets = {
-//     appointment_img,
-//     header_img,
-//     group_profiles,
-//     logo,
-//     chats_icon,
-//     verified_icon,
-//     info_icon,
-//     profile_pic,
-//     arrow_icon,
-//     contact_image,
-//     about_image,
-//     cross_icon,
-//     dropdown_icon,
-//     upload_icon,
-//     stripe_logo,
-//     razorpay_logo
-// }
 
 export const specialityData = [
     {
@@ -292,8 +261,8 @@ export const guides = [
   _id: 'guide14',
   name: 'Tek Bahadur Magar',
   image: guide14,
-  tag: 'adventureguide',
-  speciality: 'Rafting, Kayaking Guide',
+  // tag: 'adventureguide',
+  speciality: 'adventureguide',
   degree: 'Certified Whitewater Guide',
   experience: '8 years',
   about: 'Tek Bahadur Magar lives for the river. His whitewater tours aren’t just about adrenaline—they’re about connection, confidence, and pure joy. With years of experience, he expertly navigates you through Nepal’s wildest rapids while ensuring safety at every splash. Tek inspires travelers to face the current and go with the flow, both on the river and in life.',

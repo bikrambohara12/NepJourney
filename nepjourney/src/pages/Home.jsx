@@ -5,7 +5,7 @@ import Customers from '../components/Customers';
 import Speciality from '../components/Speciality';
 import TopGuide from '../components/TopGuide';
 import Banner from '../components/Banner';
-
+import Feedback from '../components/Feedback';
 const Home = () => {
   return (
     <div>
@@ -15,6 +15,7 @@ const Home = () => {
       <TopGuide />
       <Banner/>
       <Customers />
+      <Feedback/>
     </div>
   );
 };

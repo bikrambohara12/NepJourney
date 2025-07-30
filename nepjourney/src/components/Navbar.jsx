@@ -10,12 +10,7 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
-
-   const handleLogout = () => {
-    localStorage.removeItem('token');
-    setToken(false);
-    navigate('/');
-  };
+   const handleLogout = () => { localStorage.removeItem('token'); setToken(false); navigate('/') };
   return (
     <header className="bg-[#2c3e50] text-white shadow-md fixed w-full z-50">
       <div className="flex justify-between items-center px-8 py-4">

@@ -14,6 +14,8 @@ const GuideContextProvider = (props) => {
     
     const [booking,setBooking]= useState([])
     const [dashData, setDashData] = useState(false)
+ 
+    const [profileData,setProfileData]=useState(false)
 
     const logoutGuide = () => {
   localStorage.removeItem('dToken');
@@ -100,14 +102,7 @@ const cancelBooking = async(bookingId)=>{
 const getDashData = async()=>{
   try {
       
-        const { data } = await axios.get(
-      `${backendUrl}/api/guide/dashboard`,
-      {
-        headers: {
-          Authorization: `Bearer ${dToken}`
-        }
-      }
-    );
+        const { data } = await axios.get( `${backendUrl}/api/guide/dashboard`,{ headers: {Authorization: `Bearer ${dToken}`}});
 
     if (data.success) {
       setDashData(data.dashData);
@@ -118,6 +113,23 @@ const getDashData = async()=>{
     
   } catch (error) {
          console.log(error);
+    toast.error(error.message);
+  }
+}
+
+const getProfileData = async()=>{
+
+  try {
+  const { data } = await axios.get( `${backendUrl}/api/guide/profile`,{ headers: {Authorization: `Bearer ${dToken}`}});
+
+  if (data.success) {
+    setProfileData(data.profileData);
+    console.log(data.profileData);
+  }
+
+    
+  } catch (error) {
+     console.log(error);
     toast.error(error.message);
   }
 }
@@ -133,6 +145,8 @@ const getDashData = async()=>{
         cancelBooking,
         dashData,setDashData,
         getDashData,
+        profileData,setProfileData,
+        getProfileData,
     };
     return (
         <GuideContext.Provider value={value}>

@@ -99,10 +99,7 @@ const bookingComplete = async(req,res)=>{
     }
 }
 
-
 // Api to cncled booking completed for guide panel
-
-
 const bookingCancel = async(req,res)=>{
     try {
 
@@ -130,8 +127,6 @@ const guideDashboard = async(req,res)=>{
 
     try {
 
-        // const guideId = req.body
-
         const guideId = req.guideId; 
 
 
@@ -151,10 +146,6 @@ booking.forEach((item) => {
     travelers.push(String(item.userId));
   }
 });
-
-
-
-
         const dashData = {
             earnings,
             booking:booking.length,
@@ -163,12 +154,41 @@ booking.forEach((item) => {
         }
         res.json({success:true,dashData})
     } catch (error) {
-          console.log(error);
+    console.log(error);
     res.json({ success: false, message: error.message });
     }
 
 }
 
+// Api to get guide profile for guide panel
+const guideProfile = async(req,res)=>{
+    try {
 
+        const guideId = req.guideId;
+        const profileData = await GuideModel.findById(guideId).select('-password')
+        res.json({success:true,profileData})
+        
+    } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+    }
+}
 
-export{changeAvailability,guideList,loginGuide,bookingGuide,bookingCancel,bookingComplete,guideDashboard}
+// API to Update guide profile data from guide panel
+const updateGuideProfile = async(req,res)=>{
+    try {
+      
+        const {guideId,fees,address,phone,name,email,available,notes} = req.body
+
+        await GuideModel.findByIdAndUpdate(guideId,{fees,address,phone,name,email,available,notes})
+
+        res.json({success:true,message:"profile Updated successfully"});
+       
+    } catch (error) {
+        console.log(error);
+    res.json({ success: false, message: error.message });
+        console.log("Guide ID in profile route:", guideId);
+
+    }
+}
+export{changeAvailability,guideList,loginGuide,bookingGuide,bookingCancel,bookingComplete,guideDashboard,guideProfile,updateGuideProfile}

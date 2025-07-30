@@ -1,5 +1,5 @@
 import express from 'express';
-import { guideList, loginGuide, bookingGuide,bookingCancel,bookingComplete,guideDashboard} from '../controllers/guideController.js';
+import { guideList, loginGuide, bookingGuide,bookingCancel,bookingComplete,guideDashboard,guideProfile,updateGuideProfile} from '../controllers/guideController.js';
 import authGuide from '../middlewares/authGuide.js';
 
 
@@ -14,6 +14,8 @@ guideRouter.post('/complete-booking',authGuide,bookingComplete)
 guideRouter.post('/cancel-booking',authGuide,bookingCancel)
 
 guideRouter.get('/dashboard',authGuide,guideDashboard)
+guideRouter.get('/profile',authGuide,guideProfile)
+guideRouter.post('/update-profile',authGuide,updateGuideProfile)
 
 
 export default guideRouter;

@@ -43,7 +43,7 @@ const MyBooking = () => {
       { bookingId },
       {
         headers: {
-          Authorization: `Bearer ${token}` // ✅ Correct way to send token
+          Authorization: `Bearer ${token}` 
         }
       }
     );
@@ -97,7 +97,7 @@ const MyBooking = () => {
 
               <p className='text-zinc-700 font-medium mt-1'>Address:</p>
 
-              {/* ✅ Safe conditional logic for address */}
+              {/*  Safe conditional logic for address */}
               {typeof item.guideData?.address === 'object' ? (
                 <>
                   <p className='text-xs'>{item.guideData.address?.line1 || ''}</p>

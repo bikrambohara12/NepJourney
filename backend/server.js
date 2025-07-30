@@ -20,8 +20,7 @@ app.use(express.json())
 app.use(cors())
 
 
-app.use(express.urlencoded({ extended: true })); // 👈 ADD THIS
-
+app.use(express.urlencoded({ extended: true })); 
 
 
 // api endpoints
@@ -29,6 +28,8 @@ app.use('/api/admin', adminRouter);
 
 app.use('/api/user',userRouter)
 app.use('/api/guide',guideRouter)
+
+
 
 app.get('/',(req,res)=>{
     res.send("API WORKING ")

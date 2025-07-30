@@ -19,7 +19,7 @@ const RelatedGuide = ({ tag, guideId }) => {
   }, [guides, tag, guideId]);
 
   return (
-    <div className="flex flex-col items-center gap-6 my-20 text-gray-900 md:mx-10">
+    <div className="  flex flex-col items-center gap-6 my-20 text-gray-900 md:mx-10">
       <h1 className="text-4xl font-semibold">Related Guides to Book</h1>
       <p className="sm:w-1/2 text-center text-base">
         Discover other trusted and verified guides similar to your current selection to enhance your travel experience.

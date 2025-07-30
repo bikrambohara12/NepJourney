@@ -1,19 +1,152 @@
+// import React, { useContext, useEffect, useState } from 'react';
+// import { AppContext } from '../context/AppContext';
+// import axios from 'axios';
+// import { toast } from 'react-toastify';
 
-import React, { useContext, useEffect, useState } from 'react'
-import { AppContext } from '../context/AppContext'
-import axios from 'axios'
-import { toast } from 'react-toastify'
+// const MyBooking = () => {
+//   const { backendUrl, token } = useContext(AppContext);
+//   const [booking, setBooking] = useState([]);
+//   const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+//   const slotDateFormat = (slotDate) => {
+//     const dateArray = slotDate.split('_');
+//     return dateArray[0] + " " + months[Number(dateArray[1])] + " " + dateArray[2];
+//   };
+
+//   const getUserBooking = async () => {
+//     try {
+//       const { data } = await axios.get(`${backendUrl}/api/user/booking`, {
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//         },
+//       });
+
+//       console.log("Fetched Bookings:", data.booking);
+
+//       if (data.success) {
+//         setBooking(data.booking.reverse());
+//       }
+//     } catch (error) {
+//       console.error(error);
+//       toast.error(error.response?.data?.message || error.message);
+//     }
+//   };
+
+//   const cancelBooking = async (bookingId) => {
+//     try {
+//       const { data } = await axios.post(
+//         `${backendUrl}/api/user/cancelbooking`,
+//         { bookingId },
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`
+//           }
+//         }
+//       );
+
+//       if (data.success) {
+//         toast.success(data.message);
+//         getUserBooking();
+//       } else {
+//         toast.error(data.message || "Failed to cancel booking");
+//       }
+//     } catch (error) {
+//       console.error(error);
+//       toast.error(error.response?.data?.message || error.message);
+//     }
+//   };
+
+//   useEffect(() => {
+//     if (token) {
+//       getUserBooking();
+//     }
+//   }, [token]);
+
+//   return (
+//     <div className='pb-20 pt-20 px-6 sm:px-20'>
+//       <p className='pb-3 mt-12 font-medium text-zinc-700 border-b text-lg'>My Bookings</p>
+
+//       {booking.length === 0 ? (
+//         <p className='text-center mt-6 text-zinc-500'>You have no bookings yet.</p>
+//       ) : (
+//         booking.slice(0, 3).map((item, index) => (
+//           <div
+//             className='grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-4 border-b items-center'
+//             key={index}
+//           >
+//             <div>
+//               <img
+//                 className='w-32 h-28 object-cover rounded-md'
+//                 src={item.guideData?.image}
+//                 alt={item.guideData?.name || 'Guide'}
+//               />
+//             </div>
+//             <div className='flex-1 text-sm text-zinc-600'>
+//               <p className='text-neutral-800 font-semibold text-base'>
+//                 {item.guideData?.name}
+//               </p>
+//               <p>{item.guideData?.speciality || 'No speciality provided'}</p>
+
+//               <p className='text-zinc-700 font-medium mt-1'>Address:</p>
+//               {typeof item.guideData?.address === 'object' ? (
+//                 <>
+//                   <p className='text-xs'>{item.guideData.address?.line1 || ''}</p>
+//                   <p className='text-xs'>{item.guideData.address?.line2 || ''}</p>
+//                 </>
+//               ) : (
+//                 <p className='text-xs'>{item.guideData?.address || 'Address not available'}</p>
+//               )}
+
+//               <p className='text-xs mt-1'>
+//                 <span className='text-sm text-neutral-700 font-medium'>Date: </span>
+//                 {slotDateFormat(item.slotDate)}
+//               </p>
+//             </div>
+//             <div className='flex flex-col gap-2 justify-end'>
+//               {!item.cancelled && (
+//                 <button className='text-sm text-stone-500 text-center py-2 border rounded hover:bg-blue-600 hover:text-white transition-all duration-300'>
+//                   Pay Online
+//                 </button>
+//               )}
+//               {!item.cancelled && (
+//                 <button
+//                   onClick={() => cancelBooking(item._id)}
+//                   className='text-sm text-stone-500 text-center py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300'
+//                 >
+//                   Cancel Booking
+//                 </button>
+//               )}
+//               {item.cancelled && (
+//                 <button className='sm:min-w-48 py-2 border border-red-500 text-red-500'>
+//                   Booking cancelled
+//                 </button>
+//               )}
+//             </div>
+//           </div>
+//         ))
+//       )}
+//     </div>
+//   );
+// };
+
+// export default MyBooking;
+
+
+
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../context/AppContext';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const MyBooking = () => {
-  const { backendUrl, token } = useContext(AppContext)
-  const [booking, setBooking] = useState([])
- const months = ["","Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const { backendUrl, token } = useContext(AppContext);
+  const [booking, setBooking] = useState([]);
+  const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
- const slotDateFormat = (slotDate)=>{
-  const dateArray = slotDate.split('_')
-  return dateArray[0]+ ""+months[Number(dateArray[1])]+""+dateArray[2]
- }
-  
+  const slotDateFormat = (slotDate) => {
+    const dateArray = slotDate.split('_');
+    return dateArray[0] + " " + months[Number(dateArray[1])] + " " + dateArray[2];
+  };
 
   const getUserBooking = async () => {
     try {
@@ -21,49 +154,89 @@ const MyBooking = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      })
-
-      console.log("Fetched Bookings:", data.booking)
+      });
 
       if (data.success) {
-        setBooking(data.booking.reverse())
+        setBooking(data.booking.reverse());
       }
     } catch (error) {
-      console.error(error)
-      toast.error(error.response?.data?.message || error.message)
+      console.error(error);
+      toast.error(error.response?.data?.message || error.message);
     }
-  }
+  };
 
-  const cancelBooking = async(bookingId)=>{
+  const cancelBooking = async (bookingId) => {
+    try {
+      const { data } = await axios.post(
+        `${backendUrl}/api/user/cancelbooking`,
+        { bookingId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      if (data.success) {
+        toast.success(data.message);
+        getUserBooking();
+      } else {
+        toast.error(data.message || "Failed to cancel booking");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(error.response?.data?.message || error.message);
+    }
+  };
+
+  const handlePayment = async (booking) => {
+    const productCode = "NEPJOURNEY001";
+    const transactionUuid = booking._id;
+    const amount = booking.totalAmount || 100; // or any price logic
 
     try {
-      // const {data} = await axios.post(backendUrl+'/api/user/cancelbooking',{bookingId},{headers:{token}})
-        const { data } = await axios.post(
-      `${backendUrl}/api/user/cancelbooking`,
-      { bookingId },
-      {
-        headers: {
-          Authorization: `Bearer ${token}` 
-        }
-      }
-    );
-      if (data.success) {
-        toast.success(data.message)
-        getUserBooking()
-      }else{
-        toast.error(data.message||"Failed to cancel booking")
-      }     
-    } catch (error) {
-      console.error(error)
-      toast.error(error.response?.data?.message || error.message)
-    }
+      const { data } = await axios.post(`${backendUrl}/api/payment/generate-signature`, {
+        total_amount: amount,
+        transaction_uuid: transactionUuid,
+        product_code: productCode
+      });
 
-  }
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://rc-epay.esewa.com.np/api/epay/main/v2/form';
+
+      const formData = {
+        amount,
+        tax_amount: 0,
+        total_amount: amount,
+        transaction_uuid: transactionUuid,
+        product_code: productCode,
+        signature: data.signature,
+        success_url: 'http://localhost:5173/payment-success',
+        failure_url: 'http://localhost:5173/payment-failure'
+      };
+
+      for (const key in formData) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = formData[key];
+        form.appendChild(input);
+      }
+
+      document.body.appendChild(form);
+      form.submit();
+    } catch (error) {
+      console.error("Payment error:", error);
+      toast.error("Failed to initiate payment");
+    }
+  };
+
   useEffect(() => {
     if (token) {
-      getUserBooking()
+      getUserBooking();
     }
-  }, [token])
+  }, [token]);
 
   return (
     <div className='pb-20 pt-20 px-6 sm:px-20'>
@@ -81,7 +254,8 @@ const MyBooking = () => {
               <img
                 className='w-32 h-28 object-cover rounded-md'
                 src={item.guideData?.image}
-                alt={item.guideData?.name || 'Guide'} />
+                alt={item.guideData?.name || 'Guide'}
+              />
             </div>
             <div className='flex-1 text-sm text-zinc-600'>
               <p className='text-neutral-800 font-semibold text-base'>
@@ -90,8 +264,6 @@ const MyBooking = () => {
               <p>{item.guideData?.speciality || 'No speciality provided'}</p>
 
               <p className='text-zinc-700 font-medium mt-1'>Address:</p>
-
-              {/*  Safe conditional logic for address */}
               {typeof item.guideData?.address === 'object' ? (
                 <>
                   <p className='text-xs'>{item.guideData.address?.line1 || ''}</p>
@@ -107,16 +279,33 @@ const MyBooking = () => {
               </p>
             </div>
             <div className='flex flex-col gap-2 justify-end'>
-             {!item.cancelled && <button className='text-sm text-stone-500 text-center py-2 border rounded hover:bg-blue-600 hover:text-white transition-all duration-300'> Pay Online </button>} 
-             {!item.cancelled && <button onClick={()=>cancelBooking(item._id)} className='text-sm text-stone-500 text-center py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300'>Cancel Booking </button>} 
-             {item.cancelled && <button className='sm:min-w-48 py-2 border border-red-500 text-red-500 '>Booking cancelled</button>}
+              {!item.cancelled && (
+                <button
+                  onClick={() => handlePayment(item)}
+                  className='text-sm text-stone-500 text-center py-2 border rounded hover:bg-blue-600 hover:text-white transition-all duration-300'
+                >
+                  Pay Online
+                </button>
+              )}
+              {!item.cancelled && (
+                <button
+                  onClick={() => cancelBooking(item._id)}
+                  className='text-sm text-stone-500 text-center py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300'
+                >
+                  Cancel Booking
+                </button>
+              )}
+              {item.cancelled && (
+                <button className='sm:min-w-48 py-2 border border-red-500 text-red-500'>
+                  Booking cancelled
+                </button>
+              )}
             </div>
           </div>
         ))
       )}
     </div>
-  )
-}
+  );
+};
 
-export default MyBooking
-
+export default MyBooking;

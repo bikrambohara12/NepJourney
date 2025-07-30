@@ -10,8 +10,8 @@ const Guides = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("🧭 guideData:", guideData);
-    console.log("🎯 selected speciality:", speciality);
+    console.log("guideData:", guideData);
+    console.log("selected speciality:", speciality);
 
     if (speciality) {
       const filtered = guideData.filter(doc =>
@@ -39,32 +39,41 @@ const Guides = () => {
         <img src={assets.guideimg} alt="Guide background" className="absolute inset-0 w-full h-full object-cover brightness-50 rounded-lg" />
         <div className="relative z-10 text-center">
           <h1 className="text-4xl md:text-5xl font-bold">
-            Discover the world with the <br /> best Traveller guide
+            Discover the world with the <br/> best Traveller guide
           </h1>
 
           {/* Search Bar */}
           <div className="mt-10 flex flex-wrap justify-center gap-4 px-4">
-            <input
-              type="text"
-              placeholder="Location"
-              className="px-4 py-2 w-40 rounded-md text-white font-bold border bg-transparent"
-            />
-            <input
-              type="date"
-              className="px-4 py-2 w-40 rounded-md text-white border border-gray-300 bg-transparent"
-            />
+            {/* <input type="text" placeholder="Location" className="px-4 py-2 w-40 rounded-md text-white font-bold border bg-transparent"  /> */}
+
+             <select className="px-4 py-2 w-40 rounded-md text-white border border-gray-300 bg-transparent">
+              <option className="text-black" value="">Location:</option>
+              <option className="text-black" value="english">Mustang</option>
+              <option className="text-black" value="french">Pokhara</option>
+              <option className="text-black" value="spanish">Everest Base Camp</option>
+              <option className="text-black" value="spanish">Lukla</option>
+              <option className="text-black" value="spanish">Bandipur</option>
+            </select>
+
+
             <select className="px-4 py-2 w-40 rounded-md text-white border border-gray-300 bg-transparent">
-              <option className="text-black" value="">Language</option>
+              <option className="text-black" value="">Language:</option>
               <option className="text-black" value="english">English</option>
               <option className="text-black" value="french">French</option>
               <option className="text-black" value="spanish">Spanish</option>
+              <option className="text-black" value="spanish">German</option>
+              <option className="text-black" value="spanish">Hindi</option>
             </select>
-            <input
-              type="text"
-              placeholder="Your Type"
-              className="px-4 py-2 w-40 rounded-md text-white border border-gray-300 bg-transparent"
-            />
-            <button className="px-6 py-2 bg-white text-black font-semibold rounded-md hover:bg-gray-200 border border-gray-300">
+
+                <select className="px-4 py-2 w-40 rounded-md text-white border border-gray-300 bg-transparent">
+              <option className="text-black" value="">Tour Types:</option>
+              <option className="text-black" value="english">Family Tour</option>
+              <option className="text-black" value="french">Solo Tour</option>
+              <option className="text-black" value="spanish">Group Tour</option>
+              <option className="text-black" value="spanish">Luxury Tour</option>
+              <option className="text-black" value="spanish">Private Tour</option>
+            </select>
+            <button className="px-6 py-2 bg-white text-black font-semibold rounded-md hover:bg-gray-200 border border-gray-300 cursor-pointer">
               Search
             </button>
           </div>

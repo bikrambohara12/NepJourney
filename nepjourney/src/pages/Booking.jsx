@@ -27,46 +27,6 @@ const Booking = () => {
     }
   }, [guides, guideId]);
 
-
-
-//   const bookGuide = async () => {
-//     if (!token) {
-//       toast.warn("Please login first");
-//       return navigate('/login');
-//     }
-
-//     if (!date || !fullName || !email || !contactNumber || !pickupLocation) {
-//       toast.warn("Please fill in all required fields");
-//       return;
-//     }
-
-//     try {
-//       const selectedDate = new Date(date);
-//       const day = selectedDate.getDate();
-//       const month = selectedDate.getMonth() + 1;
-//       const year = selectedDate.getFullYear();
-//       const slotDate = `${day}_${month}_${year}`;
-      
-//     const {data} = await axios.post(backendUrl +'/api/user/bookguide',{guideId,date: slotDate,  fullName, email, contactNumber, pickupLocation, instructions},{
-//   headers: {
-//     Authorization: `Bearer ${token}`
-//   }
-// })
-      
-
-//       if (data.success) {
-//         toast.success(data.message);
-//         getGuidesData();
-//         navigate('/my-booking');
-//       } else {
-//         toast.error(data.message);
-//       }
-//     } catch (error) {
-//       console.log(error);
-//       toast.error(error.message || "Something went wrong");
-//     }
-//   };
-  
  
 const bookGuide = async () => {
   if (!token) {
@@ -152,6 +112,27 @@ console.log("Current guideId from URL:", guideId);
             </div>
 
             <div className="mt-4">
+              <p className="flex items-center gap-1 text-sm font-medium text-gray-900">
+                Education: <img src={assets.info_icon} alt="" />
+              </p>
+              <p className="text-sm text-gray-500 mt-1">{guideInfo.education}</p>
+            </div>
+
+             <div className="mt-4">
+              <p className="flex items-center gap-1 text-sm font-medium text-gray-900">
+                Language: <img src={assets.info_icon} alt="" />
+              </p>
+              <p className="text-sm text-gray-500 mt-1">{guideInfo.language}</p>
+            </div>
+
+             <div className="mt-4">
+              <p className="flex items-center gap-1 text-sm font-medium text-gray-900">
+                Location: <img src={assets.info_icon} alt="" />
+              </p>
+              <p className="text-sm text-gray-500 mt-1">{guideInfo.location}</p>
+            </div>
+
+             <div className="mt-4">
               <p className="flex items-center gap-1 text-sm font-medium text-gray-900">
                 About <img src={assets.info_icon} alt="" />
               </p>

@@ -15,7 +15,9 @@ import MyProfile from './pages/MyProfile';
 // import Register from './pages/Register';
 
 import Booking from './pages/Booking';
-import MyBooking from './pages/MyBooking'; 
+import MyBooking from './pages/MyBooking';
+
+
 
 const App = () => {
   return (

@@ -9,6 +9,7 @@ const GuideCard = ({ name, country, languages, price, rating, image }) => {
       <p className="text-sm text-gray-500 mb-2">{languages}</p>
       <div className="text-sm text-yellow-500">⭐ {rating}</div>
       <div className="text-blue-600 font-bold mt-1">${price} /pp</div>
+     
     </div>
   );
 };

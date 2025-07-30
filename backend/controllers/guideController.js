@@ -124,4 +124,51 @@ const bookingCancel = async(req,res)=>{
     }
 }
 
-export{changeAvailability,guideList,loginGuide,bookingGuide,bookingCancel,bookingComplete}
+// API to get dashboard data for guide panel
+
+const guideDashboard = async(req,res)=>{
+
+    try {
+
+        // const guideId = req.body
+
+        const guideId = req.guideId; 
+
+
+        const booking = await bookingModel.find({guideId})
+
+        let earnings =0;
+
+        booking.map((item)=>{
+            if (item.isCopleted || item.payment){
+                earnings += item.amount
+            }
+        })
+        let travelers = [];
+
+booking.forEach((item) => {
+  if (!travelers.includes(String(item.userId))) {
+    travelers.push(String(item.userId));
+  }
+});
+
+
+
+
+        const dashData = {
+            earnings,
+            booking:booking.length,
+            travelers:travelers.length,
+            latestBooking:booking.reverse().slice(0,5)
+        }
+        res.json({success:true,dashData})
+    } catch (error) {
+          console.log(error);
+    res.json({ success: false, message: error.message });
+    }
+
+}
+
+
+
+export{changeAvailability,guideList,loginGuide,bookingGuide,bookingCancel,bookingComplete,guideDashboard}
